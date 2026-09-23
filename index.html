@@ -1,552 +1,1808 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/newcss.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
-  </head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bryan's Sketchbook</title>
+<meta name="description" content="The portfolio of Bryan Tan Chun Xing, Software Engineering student at Sunway University, drawn as a spiral-bound sketchbook.">
+<meta name="author" content="Bryan Tan Chun Xing">
+<meta name="theme-color" content="#e6dfd1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 29l2.2-7.4L22.6 4.2a2.6 2.6 0 0 1 3.7 0l1.5 1.5a2.6 2.6 0 0 1 0 3.7L10.4 26.8z' fill='%23fff176' stroke='%233d3d3d' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M20.4 6.4l5.2 5.2' stroke='%23d64545' stroke-width='2.4'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root {
+  --paper: #fbf8f1;
+  --paper-back: #f1ece1;
+  --dot: rgba(74, 122, 199, .30);
+  --ink: #3d3d3d;
+  --ink-2: #5a5a5a;
+  --hl: #fff176;
+  --red: #d64545;
+  --desk: #e6dfd1;
+  --desk-2: #d6cdba;
+  --hand: "Segoe Print", "Bradley Hand", "Comic Neue", "Chalkboard SE", Chalkboard, cursive;
+  --plain: ui-rounded, "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --pencil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M3 29l2.2-7.4L22.6 4.2a2.6 2.6 0 0 1 3.7 0l1.5 1.5a2.6 2.6 0 0 1 0 3.7L10.4 26.8z' fill='%23fff176' stroke='%233d3d3d' stroke-width='1.4' stroke-linejoin='round'/%3E%3Cpath d='M3 29l2.2-7.4 5.2 5.2z' fill='%23f3dcb4' stroke='%233d3d3d' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M3 29l.9-3 2.1 2.1z' fill='%233d3d3d'/%3E%3Cpath d='M20.4 6.4l5.2 5.2' stroke='%23d64545' stroke-width='2.4'/%3E%3C/svg%3E") 3 29, auto;
+  color-scheme: light;
+}
 
-  <body oncontextmenu="return false">
-    <div class="cloud-layer-2"></div>
-    <!-- Animated twinkling stars (reduced) -->
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <!-- Larger stars -->
-    <div class="star large"></div>
-    <div class="star large"></div>
-    <div class="star large"></div>
-    <div class="star large"></div>
-    <div class="star large"></div>
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Bryan Tan Chun Xing</a>
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">
-                <i class="uil uil-estate nav__icon"></i>Home
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">
-                <i class="uil uil-user nav__icon"></i>About
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>Skills
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#qualification" class="nav__link">
-                <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#portfolio" class="nav__link">
-                <i class="uil uil-scenery nav__icon"></i>Projects
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">
-                <i class="uil uil-message nav__icon"></i>Contact-Me
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close"></i>
-        </div>
-        <div class="nav__btns">
-          <!-- Theme change button -->
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
+/* ============================================================
+   Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; background: var(--desk); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  color: var(--ink);
+  font-family: var(--hand);
+  line-height: 1.5;
+  background-color: var(--desk);
+  background-image:
+    radial-gradient(ellipse at 50% 28%, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 62%),
+    radial-gradient(ellipse at 50% 120%, rgba(90, 70, 40, .16), rgba(90, 70, 40, 0) 60%);
+  background-attachment: fixed;
+  cursor: var(--pencil);
+}
+a, button, label, summary { cursor: var(--pencil); }
+h1, h2, h3 { font-weight: 700; line-height: 1.15; }
+p { margin: 0 0 .7em; }
+img, svg { max-width: 100%; }
+button { font: inherit; color: inherit; }
+a { color: var(--ink); text-decoration: underline wavy rgba(214, 69, 69, .75); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+a:hover { background: linear-gradient(transparent 45%, rgba(255, 241, 118, .9) 45% 92%, transparent 92%); }
+:focus { outline: none; }
+:focus-visible { outline: 3px dashed var(--red); outline-offset: 3px; border-radius: 4px; }
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <!-- main-->
+.skip {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  background: var(--hl); padding: 8px 14px; border-radius: 3px;
+  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .4); transition: top .15s;
+}
+.skip:focus-visible { top: 12px; }
 
-    <main class="main slide-in">
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <div class="home__content grid">
-            <div class="home__img">
-              <img src="assets/img/Pro.jpg" alt="" class="about__img home__blob-img" />
-            <div class="home__social">
-              <a
-                href="https://www.linkedin.com/in/bryan-tan-chun-xing-3798aa27a/"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-linkedin-alt home__icon"></i>
-              </a>
-              <a
-                  href="https://github.com/Bryantcx-png"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-github-alt home__icon"></i>
-              </a>
-                <a
-                  href="https://www.instagram.com/itsreallybryan/?next=%2F"
-                  target="_blank"
-                  class="home__social-icon"
-                >
-                  <i class="uil uil-instagram home__icon"></i>
-                </a>
-            </div>
-            </div>
-            <div class="home__data">
-              <h1 class="home__title">Hi, I'm Bryan&nbsp;Tan&nbsp;Chun&nbsp;Xing</h1>
-              <h3 class="home__subtitle">
-                Software Engineering Student
-              </h3>
-              <p class="home__description">
-                A first-year software engineering student at
-                <strong>Sunway University</strong>, Selangor.
-              </p>
-              <a href="#contact" class="button button--flex">
-                Contact me<i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </div>
+/* ============================================================
+   Hand-drawn ink
+   ============================================================ */
+.ink { overflow: visible; }
+.ink :is(path, line, polyline, polygon, circle, ellipse, rect) {
+  fill: none; stroke: var(--ink); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.ink .r { stroke: var(--red); }
+.ink .y { stroke: var(--hl); stroke-width: 14; opacity: .95; }
+.ink .t { stroke-width: 1.3; }
+.wob { filter: url(#wob0); }
 
-          <div class="home__scroll">
-            <a href="#about" class="home__scroll-button button--flex">
-              <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-              <span class="home__scroll-name">Scroll down</span>
-              <i class="uil uil-arrow-down home__scroll-arrow"></i>
-            </a>
-          </div>
-        </div>
-      </section>
+/* Self-drawing: pathLength=1, dash 1 / gap 2, offset into the gap, then to 0 */
+.ink-ready .ink :is(path, line, polyline, polygon, circle, ellipse, rect) {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s cubic-bezier(.55, .1, .3, 1) var(--d, 0ms);
+}
+.ink-ready [data-draw]:not(.is-drawn) .ink :is(path, line, polyline, polygon, circle, ellipse, rect),
+.ink-ready .ink[data-draw]:not(.is-drawn) :is(path, line, polyline, polygon, circle, ellipse, rect) {
+  stroke-dashoffset: 1.01;
+}
 
-      <section class="about section" id="about">
-        <h2 class="section__title">About Me</h2>
-        <span class="section__subtitle">My introduction</span>
+/* Highlighter sweep */
+.hl {
+  color: inherit;
+  padding: 0 .12em; margin: 0 -.04em;
+  background: linear-gradient(100deg, rgba(255, 241, 118, 0) 0, rgba(255, 241, 118, .95) 1.5%, rgba(255, 241, 118, .82) 97%, rgba(255, 241, 118, 0) 100%) no-repeat 0 62% / 100% 70%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size .9s cubic-bezier(.6, .1, .25, 1) var(--d, 0ms);
+}
+.ink-ready [data-draw]:not(.is-drawn) .hl { background-size: 0% 70%; }
+/* on a yellow sticky, the highlighter pen reads a shade deeper */
+.sticky .hl { background-image: linear-gradient(100deg, rgba(246, 196, 40, 0) 0, rgba(246, 196, 40, .6) 1.5%, rgba(246, 196, 40, .5) 97%, rgba(246, 196, 40, 0) 100%); }
 
-        <div class="about__container container grid">
-          <img src="assets\img\about.jpg" alt="" class="about__img" />
+/* Red-pencil underline (svg injected by script) */
+.ul { position: relative; display: inline-block; }
+.ul-mark { position: absolute; left: -3%; bottom: -.3em; width: 106%; height: .5em; pointer-events: none; }
+.ul-mark path { stroke: var(--red) !important; stroke-width: 2.4 !important; }
 
-          <div class="about__data">
-            <p class="about__description">
-              I'm a first-year Software Engineering Student, passionate about technology. I have a self-motivated and can-do attitude, thriving in challenging and dynamic environments. Seeking a competitive position to enhance my skills and contribute to a professional organization. I'm very much passionate to learn new stuff that interests me and can help me to get better.
-            </p>
+/* Wiggle + line boil */
+@keyframes wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -1.8deg; } 75% { rotate: 1.8deg; } }
+@keyframes boil { 0% { filter: url(#wob0); } 33.33% { filter: url(#wob1); } 66.66% { filter: url(#wob2); } 100% { filter: url(#wob0); } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .doodle:hover, .polaroid:hover { animation: wiggle .5s ease-in-out infinite; }
+  .doodle:hover .wob, .polaroid:hover .wob { animation: boil .3s steps(1, end) infinite; }
+}
 
-            <div class="about__info">
-              <div>
-                <span class="about__info-title">3.8</span>
-                <span class="about__info-name">CGPA</span>
-              </div>
+/* ============================================================
+   Paper objects
+   ============================================================ */
+.sticky {
+  position: relative;
+  background: var(--hl);
+  padding: 30px 20px 18px;
+  transform: rotate(var(--tilt, -1.5deg));
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08), 0 16px 18px -14px rgba(70, 55, 10, .55);
+}
+.sticky--pale { background: #fff8c7; }
+.sticky::before { /* adhesive strip */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px;
+  background: linear-gradient(rgba(120, 100, 0, .10), rgba(255, 255, 255, .30));
+  border-bottom: 1px solid rgba(120, 100, 0, .07);
+}
 
-              <div>
-                <span class="about__info-title">02</span>
-                <span class="about__info-name"
-                  >
-                  Projects</span
-                >
-              </div>
+.tape {
+  position: absolute; top: -13px; left: 50%; z-index: 2;
+  width: 96px; height: 26px;
+  translate: -50% 0; rotate: var(--tr, -4deg);
+  opacity: .92;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 16%, 100% 33%, calc(100% - 4px) 50%, 100% 67%, calc(100% - 4px) 84%, 100% 100%, 0 100%, 4px 84%, 0 67%, 4px 50%, 0 33%, 4px 16%);
+  box-shadow: inset 0 0 0 40px rgba(255, 255, 255, .06);
+}
+.tape--stripe { background: repeating-linear-gradient(-45deg, rgba(120, 160, 215, .78) 0 6px, rgba(236, 243, 251, .9) 6px 12px); }
+.tape--dots { background: radial-gradient(circle, rgba(214, 69, 69, .75) 0 1.8px, transparent 2.4px) 0 0 / 9px 9px, rgba(253, 236, 230, .92); }
+.tape--grid { background: linear-gradient(rgba(74, 122, 199, .5) 1px, transparent 1px) 0 0 / 8px 8px, linear-gradient(90deg, rgba(74, 122, 199, .5) 1px, transparent 1px) 0 0 / 8px 8px, rgba(245, 248, 252, .92); }
+.tape--yellow { background: linear-gradient(rgba(255, 255, 255, .18), rgba(255, 255, 255, 0) 60%), rgba(255, 241, 118, .9); }
 
-              <div>
-                <span class="about__info-title">01+</span>
-                <span class="about__info-name">Months <br />experience</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.polaroid {
+  position: relative;
+  margin: 8px auto 14px;
+  width: min(100%, 236px);
+  background: #fff;
+  padding: 10px 10px 6px;
+  transform: rotate(var(--tilt, 0deg));
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .08), 0 16px 22px -16px rgba(40, 30, 10, .6);
+}
+.photo {
+  aspect-ratio: 10 / 7;
+  background: #f6f3ea radial-gradient(circle, rgba(74, 122, 199, .16) 0 .8px, transparent 1.2px) 0 0 / 12px 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .05);
+}
+.photo svg { display: block; width: 100%; height: 100%; }
+.polaroid figcaption { padding: 8px 2px 2px; text-align: center; }
+.polaroid h3 { margin: 0; font-size: 1.08rem; }
 
-      <section class="skills section" id="skills">
-        <h2 class="section__title">Skills</h2>
-        <span class="section__subtitle">My technical level</span>
+.index-card {
+  position: relative;
+  background:
+    linear-gradient(rgba(214, 69, 69, .6), rgba(214, 69, 69, .6)) 0 40px / 100% 1.5px no-repeat,
+    repeating-linear-gradient(transparent 0 25px, rgba(74, 122, 199, .28) 25px 26px) 0 40px / 100% calc(100% - 40px) no-repeat,
+    #fff;
+  padding: 8px 16px 12px;
+  line-height: 26px;
+  transform: rotate(var(--tilt, 1.5deg));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 16px 20px -16px rgba(40, 30, 10, .55);
+}
+.index-card h3 { margin: 0 0 8px; height: 26px; font-size: 1.05rem; }
+.index-card ul { margin: 0; padding: 0 0 0 1.1em; }
 
-        <div class="skills__container container grid">
+.doodle { display: inline-block; }
+.margin-doodle { position: absolute; pointer-events: auto; }
+.ring { position: absolute; width: 120px; height: 120px; pointer-events: none; }
+
+/* ============================================================
+   Layout: scroll (default, phones, no-JS)
+   ============================================================ */
+.topbar { padding: 12px 16px 0; font-family: var(--plain); font-size: .8rem; color: var(--ink-2); text-align: center; }
+.topbar p { margin: 0; }
+.stage { padding: 12px 12px 24px; }
+.book { position: relative; max-width: 820px; margin: 0 auto; padding-left: 26px; }
+.page {
+  position: relative;
+  margin: 0 0 34px;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 24px 13px, #4a453e 0 3.6px, rgba(60, 55, 48, .5) 4.3px, rgba(0, 0, 0, .08) 5.2px, transparent 5.8px),
+    radial-gradient(circle, var(--dot) 0 1.05px, transparent 1.5px),
+    linear-gradient(90deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, 0) 48px);
+  background-size: 48px 26px, 22px 22px, 100% 100%;
+  background-repeat: repeat-y, repeat, no-repeat;
+  background-position: 0 0, 11px 11px, 0 0;
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 14px 30px -14px rgba(40, 30, 10, .45);
+  scroll-margin-top: 64px;
+}
+.page__inner { position: relative; padding: 34px 18px 44px 54px; overflow: hidden; }
+.coil { display: block; position: absolute; left: -26px; top: 0; width: 56px; height: 100%; pointer-events: none; z-index: 6; }
+.coil--book, .cast-clip, .flap-wrap, .corner, .grab-top, .controls, .turn-hint { display: none; }
+.folio { position: absolute; left: 0; right: 0; bottom: 12px; margin: 0; text-align: center; font-size: .85rem; color: var(--ink-2); }
+
+.tabs {
+  position: sticky; top: 8px; z-index: 30;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;
+  margin: 0 0 18px;
+}
+.tab {
+  border: 0; padding: 6px 14px 5px; border-radius: 5px 5px 2px 2px;
+  background: var(--tc, #fff176); font-size: .95rem; font-weight: 700;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08), 0 6px 10px -6px rgba(0, 0, 0, .35);
+}
+.tab[aria-current="true"] { box-shadow: inset 0 -3px 0 var(--red), 0 6px 10px -6px rgba(0, 0, 0, .35); }
+
+.eyebrow, .kind, .stop-years { font-family: var(--plain); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.page-head { margin-bottom: 10px; }
+.page-title { font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 .1em; }
+.page-sub { color: var(--ink-2); margin: 0; }
+
+/* ---------- Hello ---------- */
+.hello { display: grid; gap: 22px; }
+.title { font-size: clamp(2.1rem, 4vw, 3.2rem); margin: .1em 0 .15em; }
+.subtitle { color: var(--ink-2); margin: 0; }
+.note-title { font-size: 1.6rem; margin: 0 0 .25em; }
+.hello__note p { font-size: .98rem; }
+.hello__note p:last-child { margin: 0; }
+.hello__art { margin: 0; width: 100%; max-width: 320px; justify-self: center; }
+.hello__snaps { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 4px 6px; }
+.hello__snaps .hello__art { flex: 1 1 170px; max-width: 210px; }
+.polaroid.me { width: 172px; margin: 14px 0 6px; flex: none; padding: 9px 9px 4px; }
+.polaroid.me .photo { aspect-ratio: 1; overflow: hidden; position: relative; }
+.polaroid.me img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.polaroid.me figcaption { font-size: 1rem; padding-top: 5px; }
+.polaroid.me .tape { width: 84px; }
+.polaroid.me .corner-mark { position: absolute; right: -22px; bottom: 26px; width: 34px; height: 34px; }
+/* polaroid "develops" as it is revealed */
+.dev { transition: opacity 1.1s ease .15s, filter 1.8s ease .15s; }
+.ink-ready [data-draw]:not(.is-drawn) .dev { opacity: 0; filter: sepia(.8) brightness(1.6) contrast(.55) blur(1.5px); }
+.hello__art svg { display: block; width: 100%; height: auto; }
+.hello__card { max-width: 340px; justify-self: center; width: 100%; }
+.hello__find { margin: 0; font-size: 1.02rem; }
+.hello__find a { margin: 0 .15em; }
+
+/* ---------- Work ---------- */
+.works { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px 26px; margin-top: 14px; }
+.work { display: flex; flex-direction: column; }
+.kind { margin: 0 0 4px; }
+.desc { font-size: .93rem; line-height: 1.45; margin: 0 0 8px; }
+.links { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .95rem; }
+
+/* ---------- Process ---------- */
+.process { display: grid; gap: 28px; }
+.process__art--steps { margin: 10px 0 0 60px; }
+.steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; }
+.step { display: grid; grid-template-columns: 46px 1fr; gap: 12px; align-items: center; }
+.step-num { position: relative; width: 46px; height: 46px; display: grid; place-items: center; font-size: 1.3rem; font-weight: 700; }
+.step-num svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.step h3 { margin: 0; font-size: 1.08rem; }
+.step p { margin: 0; font-size: .9rem; color: var(--ink-2); line-height: 1.4; }
+.toolbox h3.toolbox-title { font-size: 1.3rem; margin: 0 0 8px; }
+.stack { display: grid; }
+.stack .sticky { margin-top: -9px; transition: translate .2s ease; }
+.stack .sticky:first-child { margin-top: 0; }
+.stack .sticky:hover, .stack .sticky:focus-within { z-index: 3; translate: 0 -5px; }
+.stack h4 { margin: 0 0 4px; font-size: 1rem; }
+.stack p { margin: 0; font-size: .95rem; }
+.stack .sticky { padding: 26px 18px 20px; }
+.stack .sticky:last-child { padding-bottom: 14px; }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 3px 13px; font-size: .88rem; line-height: 1.3; }
+.chips li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.ico { width: 19px; height: 19px; flex: none; }
+.ico.ink :is(path, line, polyline, polygon, circle, ellipse, rect) { stroke-width: 3.2; }
+.ico.ink .t { stroke-width: 2.4; }
+.dots-list { font-size: .88rem; line-height: 1.4; }
+.certs { margin: 0; padding: 0 0 0 1.05em; font-size: .86rem; line-height: 1.4; }
+.certs span { color: var(--ink-2); }
+.process__art { width: 120px; margin: 14px auto 0; display: block; }
+
+/* ---------- Journey ---------- */
+.journey { position: relative; margin-top: 12px; }
+.route-line { display: none; }
+.stops { list-style: none; margin: 0; padding: 0 0 0 18px; display: grid; gap: 22px; border-left: 2px dashed rgba(61, 61, 61, .45); }
+.stop { position: relative; }
+.stop .pin { position: absolute; left: -34px; top: 4px; width: 30px; height: 40px; }
+.stop-card { background: #fff; padding: 12px 14px; transform: rotate(var(--tilt, 0deg)); box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 14px 18px -14px rgba(40, 30, 10, .55); }
+.stop-years { margin: 0; }
+.stop h3 { margin: 2px 0 4px; font-size: 1.12rem; }
+.stop ul { margin: 0; padding-left: 1.1em; font-size: .9rem; line-height: 1.45; }
+.here { color: var(--red); font-size: .95rem; margin: 6px 0 0; font-weight: 700; }
+.next-stop { width: fit-content; max-width: 280px; margin: 34px 0 0 auto; padding: 28px 22px 16px; }
+.next-stop p { margin: 0; font-size: 1.05rem; }
+
+/* ---------- Contact ---------- */
+.contact { display: grid; gap: 22px; }
+.contact__text p { font-size: 1rem; }
+.contact__ps { max-width: 320px; }
+.contact__ps p { margin: 0; font-size: .95rem; }
+.env-wrap { container-type: inline-size; }
+.envelope {
+  --ew: min(430px, 100cqw);
+  --er: .625;
+  position: relative;
+  width: var(--ew);
+  aspect-ratio: 16 / 10;
+  margin: calc(var(--ew) * var(--er) * .92 * .76 + 14px) auto 0;
+}
+.env-back {
+  position: absolute; inset: 0; z-index: 1; border-radius: 6px;
+  background: linear-gradient(#e4d8bf, #ece2cc);
+  box-shadow: 0 20px 30px -18px rgba(50, 35, 10, .6), inset 0 0 0 1.5px rgba(61, 61, 61, .5);
+}
+.letter {
+  position: absolute; left: 5%; right: 5%; bottom: 5%; height: 92%; z-index: 2;
+  padding: 12px 16px;
+  background:
+    repeating-linear-gradient(transparent 0 23px, rgba(74, 122, 199, .22) 23px 24px) 0 10px,
+    var(--paper);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+  font-size: .95rem; line-height: 24px;
+  transform: translateY(0);
+  transition: transform .35s ease;
+}
+.letter p { margin: 0; }
+.letter-hi { font-weight: 700; }
+.letter-mail { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; overflow-wrap: anywhere; }
+.letter-sign { text-align: right; padding-right: 8px; }
+.copy-btn {
+  border: 1.5px solid var(--ink); background: var(--hl); border-radius: 12px 10px 13px 9px;
+  padding: 0 10px; font-size: .85rem; line-height: 22px; font-weight: 700;
+  box-shadow: 1px 2px 0 var(--ink);
+}
+.copy-btn:active { translate: 1px 1px; box-shadow: 0 1px 0 var(--ink); }
+.env-pocket {
+  position: absolute; inset: 0; z-index: 3; border-radius: 6px;
+  background: linear-gradient(170deg, #f7f0df, #efe5cf);
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+}
+.env-pocket > svg.folds { position: absolute; inset: 0; width: 100%; height: 100%; }
+.folds path { fill: none; stroke: rgba(61, 61, 61, .55); stroke-width: .6; stroke-linecap: round; }
+.env-address { position: absolute; left: 8%; bottom: 10%; margin: 0; font-size: .95rem; line-height: 1.35; }
+.env-address span { display: block; border-bottom: 1px solid rgba(61, 61, 61, .35); padding: 0 12px 0 2px; }
+.env-address .to { font-size: .75rem; color: var(--ink-2); border: 0; }
+.stamp {
+  position: absolute; right: 7%; top: 30%;
+  width: 70px; height: 90px; padding: 5px;
+  background: #fff;
+  rotate: 4deg; transform-origin: 100% 0;
+  -webkit-mask: radial-gradient(circle at 5px 5px, transparent 2.8px, #000 3.3px) -5px -5px / 10px 10px, linear-gradient(#000 0 0) content-box;
+  mask: radial-gradient(circle at 5px 5px, transparent 2.8px, #000 3.3px) -5px -5px / 10px 10px, linear-gradient(#000 0 0) content-box;
+}
+.stamp-face {
+  width: 100%; height: 100%;
+  background: #fdf6cf;
+  border: 1px solid rgba(61, 61, 61, .35);
+  display: grid; grid-template-rows: 1fr auto; place-items: center;
+  font-family: var(--plain); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; padding: 3px 0 4px;
+}
+.stamp-face svg { width: 42px; height: 42px; }
+.postmark { position: absolute; right: 15%; top: 42%; width: 120px; height: 70px; rotate: -10deg; opacity: .7; pointer-events: none; }
+.postmark :is(circle, path) { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.postmark text { fill: var(--ink); font: 700 8.5px var(--plain); letter-spacing: 1.5px; }
+.env-flap {
+  position: absolute; left: 0; right: 0; top: 0; height: 58%; z-index: 4;
+  transform-origin: 50% 0;
+  transform: perspective(1000px) rotateX(0deg);
+  transition: transform .45s cubic-bezier(.4, .1, .3, 1) .32s, z-index 0s linear .32s;
+}
+.env-flap::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(#f3ebd8, #e8dcc2);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.env-flap > svg.folds { position: absolute; inset: 0; width: 100%; height: 100%; }
+.seal { position: absolute; left: 50%; top: 100%; width: 34px; height: 30px; translate: -50% -78%; }
+.env-toggle { position: absolute; inset: 0; z-index: 5; width: 100%; border: 0; background: transparent; border-radius: 6px; }
+.env-hint { text-align: center; margin: 12px 0 0; font-size: .9rem; color: var(--ink-2); }
+.copy-status { min-height: 1.5em; text-align: center; margin: 4px 0 0; font-size: .9rem; }
+
+/* Envelope open: flap swings up and drops behind the letter; letter rises out of the pocket */
+.envelope.is-open .env-flap {
+  transform: perspective(1000px) rotateX(180deg); z-index: 1;
+  transition: transform .45s cubic-bezier(.4, .1, .3, 1) 0s, z-index 0s linear .22s;
+}
+.envelope.is-open .letter {
+  transform: translateY(-76%);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1) .38s;
+}
+.envelope:not(.is-closed):has(:focus-visible) .env-flap {
+  transform: perspective(1000px) rotateX(180deg); z-index: 1;
+  transition: transform .45s cubic-bezier(.4, .1, .3, 1) 0s, z-index 0s linear .22s;
+}
+.envelope:not(.is-closed):has(:focus-visible) .letter {
+  transform: translateY(-76%);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1) .38s;
+}
+@media (hover: hover) {
+  .envelope:not(.is-closed):hover .env-flap {
+    transform: perspective(1000px) rotateX(180deg); z-index: 1;
+    transition: transform .45s cubic-bezier(.4, .1, .3, 1) 0s, z-index 0s linear .22s;
+  }
+  .envelope:not(.is-closed):hover .letter {
+    transform: translateY(-76%);
+    transition: transform .6s cubic-bezier(.2, .8, .2, 1) .38s;
+  }
+}
+
+.foot { text-align: center; font-size: .85rem; color: var(--ink-2); padding: 0 16px 20px; }
+.foot p { margin: 0; }
+
+#trail { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
+
+/* ---------- small phones ---------- */
+@media (max-width: 480px) {
+  .envelope { --er: .8; aspect-ratio: 5 / 4; }
+  .letter { font-size: .85rem; line-height: 21px; padding: 8px 12px; }
+  .stamp { scale: .72; }
+  .postmark { display: none; }
+  .env-address { font-size: .82rem; }
+  .tabs { margin-left: -26px; gap: 5px; }
+  .tab { padding: 5px 9px 4px; font-size: .84rem; }
+}
+
+/* ---------- tablets in scroll mode ---------- */
+@media (min-width: 620px) {
+  .page__inner { padding: 40px 34px 50px 70px; }
+  .hello { grid-template-columns: 1.1fr .9fr; align-items: start; }
+  .hello__find { grid-column: 1 / -1; }
+  .process { grid-template-columns: 1fr 1.02fr; }
+  .contact { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: end; }
+  .route-line { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 70px; }
+  .stops { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; border: 0; gap: 20px; }
+  .stop { padding-top: 58px; }
+  .stop .pin { left: 50%; top: 0; translate: -50% 0; }
+}
+
+/* ============================================================
+   Layout: desktop book (JS on, > 860px)
+   ============================================================ */
+@media (min-width: 861px) {
+  .js .topbar { padding-top: 14px; }
+  .js .stage {
+    min-height: calc(100vh - 34px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 14px 70px 12px 90px;
+  }
+  .js .book {
+    --bw: min(1020px, calc(100vw - 200px));
+    --bh: clamp(600px, calc(100vh - 150px), 720px);
+    width: var(--bw); height: var(--bh);
+    max-width: none; margin: 0; padding: 0;
+    isolation: isolate;
+    user-select: none; -webkit-user-select: none;
+  }
+  .js .book::before { /* the stack of pages underneath */
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    border-radius: 3px 8px 8px 3px; background: var(--paper);
+    box-shadow:
+      2px 2px 0 #f1ece0, 4px 4px 0 #ebe4d4, 6px 6px 0 #f1ece0, 8px 8px 0 #e3dbc9,
+      0 30px 50px -24px rgba(40, 30, 10, .55);
+  }
+  .js .page {
+    position: absolute; inset: 0; margin: 0;
+    visibility: hidden; z-index: 1; overflow: hidden;
+  }
+  .js .page.is-under { visibility: visible; z-index: 2; }
+  .js .page.is-current, .js .page.is-turning { visibility: visible; z-index: 4; }
+  .js .page.is-turning, .js .page.is-under { will-change: transform; }
+  .js .page__inner {
+    position: absolute; inset: 0;
+    padding: 38px 48px 42px 86px;
+    overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: rgba(61, 61, 61, .3) transparent;
+    user-select: text; -webkit-user-select: text;
+  }
+  .js .page .coil--page { display: none; }
+  .js .coil--book { display: block; }
+
+  .js .cast-clip { display: block; position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; border-radius: 3px 8px 8px 3px; }
+  .js .flap-wrap { display: block; position: absolute; inset: 0; z-index: 5; pointer-events: none; filter: drop-shadow(-3px 5px 8px rgba(40, 30, 10, .28)); }
+  .js .cast-clip[hidden], .js .flap-wrap[hidden] { display: none; }
+
+  .js .corner {
+    display: block; position: absolute; right: 0; bottom: 0; z-index: 7;
+    width: 78px; height: 78px; padding: 0; border: 0; background: transparent;
+    touch-action: none; border-radius: 0 0 8px 0;
+  }
+  .js .corner::before { /* dog-ear */
+    content: ""; position: absolute; right: 0; bottom: 0; width: 30px; height: 30px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0) 49%, rgba(40, 30, 10, .16) 50%, var(--paper-back) 58%, #fff 100%);
+    border-radius: 7px 0 8px 0;
+    box-shadow: -2px -2px 5px -2px rgba(0, 0, 0, .12);
+    transition: width .2s ease, height .2s ease;
+  }
+  .js .corner:hover::before, .js .corner:focus-visible::before { width: 40px; height: 40px; }
+  .js .book.is-turning .corner::before { opacity: 0; }
+  .js .book.at-end .corner { display: none; }
+  .js .grab-top { display: block; position: absolute; right: 0; top: 0; width: 56px; height: 56px; z-index: 7; touch-action: none; }
+  .js .book.at-end .grab-top { display: none; }
+
+  .js .tabs {
+    position: absolute; left: 100%; top: 34px; z-index: 0;
+    flex-direction: column; flex-wrap: nowrap; gap: 10px; margin: 0;
+  }
+  .js .tab {
+    writing-mode: vertical-rl;
+    padding: 14px 8px 14px 7px; border-radius: 0 8px 8px 0;
+    font-size: .92rem; min-height: 82px;
+    translate: -8px 0; transition: translate .2s ease;
+    box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, .18);
+  }
+  .js .tab:hover { translate: -3px 0; }
+  .js .tab[aria-current="true"] { translate: 2px 0; box-shadow: inset -3px 0 0 var(--red), 2px 2px 4px -1px rgba(0, 0, 0, .2); }
+
+  .js .controls {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-top: 22px; width: var(--bw, 100%);
+  }
+  .js .turn-hint { display: flex; }
+
+  .js .hello { grid-template-columns: 1.12fr .88fr; gap: 20px 40px; }
+  .js .works { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+  .js .contact { min-height: 100%; }
+}
+.ctrl {
+  width: 46px; height: 46px; border-radius: 50% 46% 52% 48%;
+  border: 2px solid var(--ink); background: var(--paper);
+  display: grid; place-items: center; padding: 0;
+  box-shadow: 2px 3px 0 rgba(61, 61, 61, .85);
+}
+.ctrl svg { width: 24px; height: 24px; }
+.ctrl svg path { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ctrl:hover:not(:disabled) { background: var(--hl); }
+.ctrl:active:not(:disabled) { translate: 1px 2px; box-shadow: 1px 1px 0 rgba(61, 61, 61, .85); }
+.ctrl:disabled { opacity: .35; }
+.counter { min-width: 7ch; text-align: center; font-size: 1.05rem; margin: 0; }
+.hint { font-family: var(--plain); font-size: .76rem; color: var(--ink-2); margin: 0 0 0 10px; max-width: 34ch; line-height: 1.35; }
+
+.turn-hint {
+  position: absolute; right: 74px; bottom: 30px; margin: 0;
+  align-items: flex-end; gap: 4px;
+  font-size: .95rem; color: var(--ink-2); rotate: -4deg;
+  pointer-events: none;
+}
+.turn-hint svg { width: 64px; height: 38px; }
+
+/* Page-curl strips (positioned by script) */
+.strip { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.flap {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  transform-origin: 0 0; visibility: hidden; overflow: hidden;
+  background-color: var(--paper-back);
+  background-image:
+    radial-gradient(circle, rgba(74, 122, 199, .12) 0 1px, transparent 1.4px),
+    linear-gradient(90deg, rgba(255, 255, 255, .5), rgba(0, 0, 0, .03));
+  background-size: 22px 22px, 100% 100%;
+  background-position: 11px 11px, 0 0;
+  border-radius: 3px 8px 8px 3px;
+}
+.sheen { background: linear-gradient(to bottom, rgba(70, 55, 25, .22) 0, rgba(255, 255, 255, .7) 9%, rgba(255, 255, 255, .2) 32%, rgba(255, 255, 255, 0) 58%, rgba(70, 55, 25, .1) 100%); }
+.cast { background: linear-gradient(to bottom, rgba(40, 30, 15, .34), rgba(40, 30, 15, .12) 35%, rgba(40, 30, 15, 0)); }
+.fold-shade { z-index: 50; background: linear-gradient(to bottom, rgba(40, 30, 15, .14), rgba(255, 255, 255, .22) 28%, rgba(255, 255, 255, 0)); }
+
+/* ============================================================
+   Reduced motion: everything already drawn, nothing moves
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .ink-ready .ink :is(path, line, polyline, polygon, circle, ellipse, rect) { stroke-dashoffset: 0 !important; }
+  .ink-ready [data-draw] .hl { background-size: 100% 70% !important; }
+  .ink-ready [data-draw] .dev { opacity: 1 !important; filter: none !important; }
+  #trail { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Shared SVG: wobble filters, coffee-ring filter, metallic coil pattern -->
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <filter id="wob0" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wob1" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wob2" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ringf" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+    <linearGradient id="metal" gradientUnits="userSpaceOnUse" x1="4" y1="0" x2="52" y2="0">
+      <stop offset="0" stop-color="#5b5b5b"/>
+      <stop offset=".22" stop-color="#f5f5f5"/>
+      <stop offset=".5" stop-color="#9d9d9d"/>
+      <stop offset=".72" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#6a6a6a"/>
+    </linearGradient>
+    <pattern id="coil" width="56" height="26" patternUnits="userSpaceOnUse">
+      <path d="M14 19.5 C 19 20.5, 23 21, 28 21.5" fill="none" stroke="#6f6a62" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M50 15 C 44 3, 20 1, 9 6 C 3 10, 6 18, 14 19.5" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="4.6" stroke-linecap="round" transform="translate(.6 1)"/>
+      <path d="M50 15 C 44 3, 20 1, 9 6 C 3 10, 6 18, 14 19.5" fill="none" stroke="url(#metal)" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M43 7.5 C 34 3.5, 22 3.5, 14 6" fill="none" stroke="rgba(255,255,255,.85)" stroke-width=".8" stroke-linecap="round"/>
+    </pattern>
+  </defs>
+</svg>
+
+<a class="skip" href="#contact">Skip to contact details</a>
+
+<header class="topbar">
+  <p>Bryan Tan Chun Xing · portfolio, kept as a sketchbook</p>
+</header>
+
+<main class="stage" id="main">
+  <div class="book" id="book" role="region" aria-roledescription="sketchbook" aria-label="Bryan's Sketchbook">
+
+    <svg class="coil coil--book" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+
+    <nav class="tabs" aria-label="Index tabs">
+      <button class="tab" type="button" data-page="0" style="--tc:#fff176">Hello</button>
+      <button class="tab" type="button" data-page="1" data-last="2" style="--tc:#f6bcb5">Work</button>
+      <button class="tab" type="button" data-page="3" style="--tc:#bed5f1">Process</button>
+      <button class="tab" type="button" data-page="4" style="--tc:#cfe5c2">Journey</button>
+      <button class="tab" type="button" data-page="5" style="--tc:#e7dcc6">Contact</button>
+    </nav>
+
+    <!-- ======================= 1 · HELLO ======================= -->
+    <section class="page" id="hello" aria-labelledby="h-title" data-title="Hello">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <svg class="ring" style="right:14px; top:-18px" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <g filter="url(#ringf)" fill="none">
+            <circle cx="60" cy="60" r="44" stroke="rgba(150,105,55,.24)" stroke-width="6"/>
+            <circle cx="60" cy="60" r="40" stroke="rgba(150,105,55,.14)" stroke-width="1.5"/>
+            <path d="M22 70 C 30 96, 70 108, 96 88" stroke="rgba(130,90,45,.28)" stroke-width="2.5"/>
+          </g>
+        </svg>
+
+        <div class="hello">
           <div>
-            <div class="skills__content skills__open">
-              <div class="skills__header">
-                <i class="fas fa-pencil-ruler skills__icon"></i>
-
-                <div>
-                  <h1 class="skills__title">Programming Languages</h1>
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-              
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Java</h3>
-                  </div>
-                  <p class="skills__desc">I use Java to build robust, object-oriented applications and have experience with its core libraries and frameworks.</p>
-                </div>
-                
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">Python</h3>
-                    </div>
-                    <p class="skills__desc">Python is my go-to for scripting, automation, and data tasks thanks to its simplicity and powerful libraries.</p>
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">HTML</h3>
-                    </div>
-                    <p class="skills__desc">I create structured, accessible web pages using HTML, ensuring a solid foundation for every project.</p>
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">CSS</h3>
-                    </div>
-                    <p class="skills__desc">I enjoy bringing designs to life with CSS, focusing on responsive layouts and modern visual effects.</p>
-                  </div>
-                  <div class="skills__data">
-                    <div class="skills__titles">
-                      <h3 class="skills__name">JavaScript</h3>
-                    </div>
-                    <p class="skills__desc">JavaScript lets me add interactivity and dynamic features to my web projects, from simple scripts to complex interfaces.</p>
-                </div>
-                
-                
-              </div>
+            <div data-draw>
+              <p class="eyebrow">Sketchbook Nº 01 · property of</p>
+              <h1 class="title" id="h-title">Bryan's <span class="ul">Sketchbook</span></h1>
+              <p class="subtitle">Bryan Tan Chun Xing — Software Engineering student</p>
             </div>
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="fas fa-code skills__icon"></i>
 
-                <div>
-                  <h1 class="skills__title">IT Constructs</h1>
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Object Oriented Programming</h3>
-                  </div>
-                  <p class="skills__desc">I apply OOP principles to write modular, maintainable code and design scalable software solutions.</p>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Operating System</h3>
-                  </div>
-                  <p class="skills__desc">I understand OS concepts and use this knowledge to optimize software performance and troubleshoot issues.</p>
-                </div>
-              </div>
+            <div class="sticky hello__note" style="--tilt:-1.8deg; margin-top:26px" data-draw>
+              <h2 class="note-title">Hello!</h2>
+              <p>I'm Bryan, a <mark class="hl">Software Engineering student at Sunway University</mark> in Selangor, Malaysia.</p>
+              <p>I bring a self-motivated, can-do attitude and I'm at my best in challenging, fast-moving environments. When something catches my interest, I dig in until I <span class="ul">really get it</span> — and I'm looking for a place to sharpen my skills and contribute to a professional team.</p>
             </div>
           </div>
 
           <div>
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="fas fa-swatchbook skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Technologies</h1>
-                </div>
-
-                <i class="uil uil-angle-down skills__arrow"></i>
+            <div class="hello__snaps">
+            <figure class="polaroid me" style="--tilt:-3.5deg" data-draw>
+              <span class="tape tape--dots" aria-hidden="true" style="--tr:3deg"></span>
+              <div class="photo">
+                <img class="dev" src="data:image/jpeg;base64,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" width="320" height="320" alt="Bryan Tan Chun Xing smiling at the camera in a dark suit and tie">
               </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">GitHub</h3>
-                  </div>
-                  <p class="skills__desc">I use GitHub for version control, collaboration, and showcasing my projects to the developer community.</p>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Oracle APEX SQL</h3>
-                  </div>
-                  <p class="skills__desc">I develop database-driven applications and manage data efficiently using Oracle APEX and SQL.</p>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Figma</h3>
-                  </div>
-                  <p class="skills__desc">Figma is my tool of choice for designing user interfaces and collaborating on UI/UX projects.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--=================== Academic Timeline (NEW) ===================-->
-      <section class="academic-timeline-section" id="qualification">
-        <h2 class="section__title">Academic Journey</h2>
-        <div class="academic-timeline">
-          <div class="timeline-card">
-            <img src="assets/img/CLHS.png" alt="CLHS Logo" class="timeline-logo" />
-            <h3 class="timeline-title">Chung Ling High School</h3>
-            <span class="timeline-years">2018 - 2023</span>
-            <ul class="timeline-achievements">
-              <li>Subjects: Chinese, Malay, English, Physics, Biology, Chemistry, Mathematics, Additional Mathematics, Sejarah, Pendidikan Moral</li>
-              <li>Computer Club, JCI Club, St John Ambulance</li>
-            </ul>
-            <p class="timeline-desc">Solid academic foundation and active co-curricular involvement.</p>
-          </div>
-          <div class="timeline-card">
-            <img src="assets/img/Sunway_College.png" alt="Sunway College Logo" class="timeline-logo" />
-            <h3 class="timeline-title">Sunway College</h3>
-            <span class="timeline-years">2023 - 2024</span>
-            <ul class="timeline-achievements">
-              <li>Jeffrey Cheah Entrance Scholarship</li>
-              <li>CGPA 3.94</li>
-                      </ul>
-            <p class="timeline-desc">Excelled in pre-university studies and earned a prestigious scholarship.</p>
-                    </div>
-          <div class="timeline-card">
-            <img src="assets/img/Sunway_University.png" alt="Sunway University Logo" class="timeline-logo" />
-            <h3 class="timeline-title">Sunway University</h3>
-            <span class="timeline-years">2023 - Now</span>
-            <ul class="timeline-achievements">
-              <li>Studying IT core subjects: Operating System, Web Development, Object Oriented Programming, Database Fundamentals</li>
-              <li>CGPA 3.8 (to date)</li>
-              <li>Jeffrey Cheah ACE Scholarship</li>
-                      </ul>
-            <p class="timeline-desc">Pursuing a degree in Software Engineering with continued academic excellence.</p>
-                    </div>
-                  </div>
-      </section>
-
-      <!--=================== Awards & Certifications ===================-->
-      <section class="awards-section">
-        <h2 class="section__title">Awards & Certifications</h2>
-        <div class="awards-grid">
-          <div class="award-card">
-            <img src="assets/img/Dean's_List.jpeg" alt="Dean's List Award Certificate" class="award-img" />
-            <h3 class="award-title">Dean's List Award</h3>
-            <span class="award-issuer">Sunway University</span>
-            <p class="award-desc">Recognized for outstanding academic achievement and placement on the Dean's List.</p>
-                  </div>
-          <div class="award-card">
-            <img src="assets/img/Cisco_Certification.jpeg" alt="CCNA: Introduction to Networks Certificate" class="award-img" />
-            <h3 class="award-title">CCNA: Introduction to Networks Certificate</h3>
-            <span class="award-issuer">Cisco Networking Academy / Sunway University</span>
-            <p class="award-desc">Successfully completed the CCNA: Introduction to Networks course under the Cisco Networking Academy, offered by Sunway University.</p>
-          </div>
-        </div>
-      </section>
-
-      <!--=================== Portfolio ===================-->
-      <section class="portfolio section" id="portfolio">
-        <h2 class="section__title">Projects</h2>
-        <span class="section__subtitle">Most recent work</span>
-
-        <div class="portfolio__grid">
-          <!-- ------------------------portfolio 1-------------------- -->
-          <div class="portfolio__content grid">
-              <img src="assets/img/portfolio2.png" class="portfolio__img" />
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">Clothing Brand Website</h3>
-                <p class="portfolio__description">
-                  A clothing brand website that I developed alongside with my team. 
-                  This project showcases modern web development skills with responsive 
-                  design, e-commerce functionality, and an intuitive user interface. 
-                  The website features product catalogs, shopping cart functionality, 
-                  and a seamless shopping experience for customers.
-                </p>
-                <a
-                href="https://github.com/Bryantcx-png/Sakura-Fashion-Site"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-            </div>
-          </div>
-          <!-- ------------------------portfolio 2-------------------- -->
-          <div class="portfolio__content grid">
-              <img src="assets/img/portfolio1.png" class="portfolio__img" />
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">
-                  Inventory Management System
-                </h3>
-                <p class="portfolio__description">
-                  An inventory management system GUI developed using Python alongside 
-                  with my team. This project demonstrates our skills in Python 
-                  programming and GUI development. The system provides comprehensive 
-                  inventory tracking, stock management, and user-friendly interface 
-                  for efficient business operations.
-                </p>
-                <a
-                href="https://github.com/Bryantcx-png/Inventory-Management"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                href="https://www.youtube.com/watch?v=Mby0-_QChaw"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                <i class="uil uil-youtube button__icon"></i>
-                </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--===================== Contact Me =====================-->
-      <section class="contact section" id="contact">
-        <h2 class="section__title">Contact Me</h2>
-        <span class="section__subtitle">Get in touch</span>
-
-        <div class="contact__container container grid">
-          <div>
-            <div class="contact__information">
-              <i class="uil uil-calling contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Contact Me</h3>
-                <span class="contact__subtitle"
-                  ><a href="tel:6362243314"></a>+60 12 345 6789</span
-                >
-              </div>
+              <figcaption>that's <span class="ul">me!</span></figcaption>
+              <svg class="ink corner-mark" viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path class="r" d="M17 3 L 20.5 12.5 L 31 13 L 23 19.5 L 26 30 L 17 24 L 8 30 L 11 19.5 L 3 13 L 13.5 12.5 Z"/></svg>
+            </figure>
+            <figure class="hello__art doodle" data-draw>
+              <svg class="ink" viewBox="0 0 310 200" role="img" aria-label="Pencil doodle of a laptop showing code brackets, next to a steaming coffee cup">
+                <path class="y" d="M40 176 C 110 170, 200 178, 262 171"/>
+                <path d="M62 34 C 110 31, 170 33, 222 32 C 224 64, 223 100, 225 130 C 172 132, 114 129, 60 131 C 61 98, 59 64, 62 34 Z"/>
+                <path class="t" d="M74 45 C 120 43, 168 45, 211 44 L 212 120 C 166 121, 118 119, 73 121 Z"/>
+                <path d="M44 136 C 110 133, 180 135, 244 134 L 258 158 C 180 161, 104 159, 30 160 Z"/>
+                <path class="t" d="M126 147 C 138 146, 152 147, 164 146"/>
+                <path class="r" d="M108 66 L 92 82 L 109 98"/>
+                <path class="r" d="M178 66 L 194 82 L 177 98"/>
+                <path d="M151 60 L 135 104"/>
+                <path d="M262 104 C 262 124, 266 140, 276 141 C 287 141, 292 124, 291 104 C 282 106, 270 106, 262 104 Z"/>
+                <path d="M291 112 C 302 110, 303 125, 290 127"/>
+                <path class="t" d="M270 94 C 264 86, 276 80, 270 70"/>
+                <path class="t" d="M282 94 C 276 86, 288 80, 282 70"/>
+                <path class="t" d="M32 38 L 32 54 M24 46 L 40 46"/>
+                <path class="t" d="M240 16 L 246 24 M246 16 L 240 24"/>
+              </svg>
+            </figure>
             </div>
 
-            <div class="contact__information">
-              <i class="uil uil-envelope-minus contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle"
-                  >productivebryan@gmail.com</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-map-marker contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Location</h3>
-                <span class="contact__subtitle"
-                  >Selangor, Malaysia</span
-                >
-              </div>
-            </div>
+            <aside class="index-card hello__card" aria-labelledby="h-notes" style="--tilt:1.6deg; margin-top:10px" data-draw>
+              <h3 id="h-notes">field notes</h3>
+              <ul>
+                <li>CGPA <mark class="hl">3.8</mark> at Sunway University</li>
+                <li>Jeffrey Cheah ACE Scholarship</li>
+                <li>Dean's List award</li>
+                <li>Cisco CCNA: Introduction to Networks</li>
+              </ul>
+            </aside>
           </div>
 
-          <form action="" class="contact__form grid">
-            <div class="contact__inputs grid">
-              <div class="contact__content">
-                <label for="" class="content__label">Name</label>
-                <input type="text" class="contact__input" />
-              </div>
-
-              <div class="contact__content">
-                <label for="" class="content__label">Email</label>
-                <input type="Email" class="contact__input" />
-              </div>
-            </div>
-
-            <div class="contact__content">
-              <label for="" class="content__label">Message</label>
-              <textarea
-                name=""
-                id=""
-                cols="0"
-                rows="7"
-                class="contact__input"
-              ></textarea>
-            </div>
-
-            <div>
-              <a
-                href=" mailto: productivebryan@gmail.com?subject=Testing out mailto! &body=This is only a test!"
-                class="button button--flex"
-              >
-                Send Message
-                <i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <!--================== Footer ===============-->
-    <footer class="footer">
-      <div class="footer__bg">
-        <div class="footer__container container grid">
-          <div>
-            <h1 class="footer__title">Bryan Tan Chun Xing</h1>
-            <span class="footer__subtitle"
-              >Software Engineering Student</span
-            >
-          </div>
-
-          <ul class="footer__links">
-            <li>
-              <a href="#qualification" class="footer__link">Qualification</a>
-            </li>
-            <li>
-              <a href="#portfolio" class="footer__link">Portfolio</a>
-            </li>
-            <li>
-              <a href="#contact" class="footer__link">Contact-Me</a>
-            </li>
-          </ul>
-
-          <div class="footer__socials">
-            <a
-              href="https://www.instagram.com/venkateeshh/"
-              class="footer__social"
-              target="__blank"
-            >
-            <i class="fa-brands fa-instagram"></i>
-            </a>
-
-            <a
-              href="https://twitter.com/Venkateeshhh"
-              target="__blank"
-              class="footer__social"
-            >
-            <i class="fa-brands fa-x-twitter"></i>
-            </a>
-          </div>
+          <p class="hello__find">find me →
+            <a href="https://www.linkedin.com/in/bryan-tan-chun-xing-3798aa27a/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a> ·
+            <a href="https://github.com/Bryantcx-png" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a> ·
+            <a href="https://www.instagram.com/itsreallybryan/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a>
+          </p>
         </div>
 
-        <p class="footer__copy">&#169; Bryan Tan Chun Xing. All right reserved</p>
+        <p class="turn-hint" aria-hidden="true">peel the corner
+          <svg class="ink" viewBox="0 0 64 38"><path d="M4 8 C 22 2, 42 8, 52 26"/><path d="M42 24 L 53 28 L 56 16"/></svg>
+        </p>
+        <p class="folio" aria-hidden="true">— 1 —</p>
       </div>
-    </footer>
+    </section>
 
-    <!--================== SCROLL TOP ==================-->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
-    </a>
+    <!-- ======================= 2 · SELECTED WORK ======================= -->
+    <section class="page" id="work" aria-labelledby="h-work" data-title="Selected work">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <header class="page-head" data-draw>
+          <h2 class="page-title" id="h-work">Selected <span class="ul">work</span></h2>
+          <p class="page-sub">things I've built — taped in, with notes in the margins</p>
+        </header>
 
-    <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
-    <script src="assets/ptj.js"></script>
+        <svg class="ink margin-doodle doodle" style="right:40px; top:34px; width:46px" viewBox="0 0 60 60" aria-hidden="true" focusable="false" data-draw>
+          <path class="r" d="M30 5 L 36.5 23 L 55 23.5 L 40.5 35 L 46 54 L 30 43 L 13.5 54.5 L 19.5 35.5 L 5 24 L 23.5 23 Z"/>
+        </svg>
 
-    <!-- Award Image Modal -->
-    <div id="award-modal" class="award-modal">
-      <span id="award-modal-close" class="award-modal-close">&times;</span>
-      <img id="award-modal-img" class="award-modal-img" src="" alt="Award Full View" />
-    </div>
-  </body>
+        <div class="works">
+          <article class="work" aria-labelledby="w-cloth" data-draw>
+            <figure class="polaroid" style="--tilt:-2.4deg">
+              <span class="tape tape--stripe" aria-hidden="true" style="--tr:-5deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of a browser window with a clothes hanger, a T-shirt and sakura blossoms">
+                  <path class="y" d="M30 118 C 80 112, 130 120, 172 113"/>
+                  <path d="M22 18 C 70 16, 130 19, 178 17 C 180 52, 178 90, 180 122 C 130 124, 70 121, 20 123 C 21 88, 19 52, 22 18 Z"/>
+                  <path d="M22 31 C 80 30, 130 32, 179 30"/>
+                  <circle class="t" cx="31" cy="24.5" r="2"/>
+                  <circle class="t" cx="39" cy="24.5" r="2"/>
+                  <circle class="t" cx="47" cy="24.5" r="2"/>
+                  <path d="M98 42 C 98 36, 107 36, 106 42 C 105 47, 98 47, 98 53"/>
+                  <path d="M98 53 L 72 68 C 88 69, 110 68, 126 68 L 98 53"/>
+                  <path d="M80 71 L 66 80 L 73 90 L 80 86 L 81 112 C 94 113, 106 112, 118 112 L 118 86 L 125 90 L 132 80 L 118 71 C 112 78, 86 78, 80 71 Z"/>
+                  <path class="r" d="M154 60 c -7 -10, 7 -13, 0 0 c 11 -4, 12 9, 0 0 c 8 8, -3 15, 0 0 c -4 11, -14 3, 0 0 c -12 0, -9 -12, 0 0"/>
+                  <path class="r" d="M44 62 c -5 -7, 5 -9, 0 0 c 8 -3, 8 6, 0 0 c 6 6, -2 10, 0 0 c -3 8, -10 2, 0 0 c -8 0, -6 -8, 0 0"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-cloth">Clothing Brand Website</h3></figcaption>
+            </figure>
+            <p class="kind">Sakura Fashion Site · team project</p>
+            <p class="desc">A clothing brand website I developed with my team — responsive design, product catalogues, a working shopping cart and a smooth, intuitive shopping experience from browse to checkout.</p>
+            <p class="links"><a href="https://github.com/Bryantcx-png/Sakura-Fashion-Site" target="_blank" rel="noopener">GitHub repo<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+
+          <article class="work" aria-labelledby="w-inv" data-draw>
+            <figure class="polaroid" style="--tilt:1.8deg">
+              <span class="tape tape--grid" aria-hidden="true" style="--tr:3deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of an app window with a checklist, stacked boxes on a shelf and a barcode">
+                  <path class="y" d="M92 100 C 120 97, 150 101, 174 98"/>
+                  <path d="M18 18 C 70 16, 130 19, 182 17 C 183 54, 181 92, 183 124 C 130 126, 70 123, 17 125 C 18 90, 16 54, 18 18 Z"/>
+                  <path d="M18 31 C 80 30, 130 32, 182 30"/>
+                  <path d="M62 31 C 63 64, 61 96, 62 124"/>
+                  <path class="r" d="M25 47 l 4 4 l 7 -9"/>
+                  <path class="t" d="M40 47 C 46 46, 50 47, 55 46"/>
+                  <path class="r" d="M25 66 l 4 4 l 7 -9"/>
+                  <path class="t" d="M40 66 C 45 65, 50 66, 54 65"/>
+                  <path class="t" d="M26 86 C 29 85, 33 86, 35 86 L 35 93 L 26 93 Z"/>
+                  <path class="t" d="M40 89 C 45 88, 50 89, 55 88"/>
+                  <path d="M78 110 L 78 84 C 88 83, 98 84, 108 84 L 108 110"/>
+                  <path class="t" d="M88 84 L 88 92 L 98 92 L 98 84"/>
+                  <path d="M112 110 L 112 90 C 120 89, 128 90, 136 90 L 136 110"/>
+                  <path d="M84 84 L 84 62 C 94 61, 102 62, 110 62 L 110 84"/>
+                  <path d="M72 110 C 100 111, 140 109, 176 111"/>
+                  <path class="t" d="M148 46 L 148 76 M152 46 L 152 76 M157 46 L 157 76 M160 46 L 160 76 M166 46 L 166 76 M170 46 L 170 76"/>
+                  <path class="t" d="M146 82 C 156 81, 164 82, 172 81"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-inv">Inventory Management System</h3></figcaption>
+            </figure>
+            <p class="kind">Python GUI · team project</p>
+            <p class="desc">An inventory management system with a Python GUI, built with my team. It covers inventory tracking and stock management behind a user-friendly interface for efficient day-to-day operations.</p>
+            <p class="links">
+              <a href="https://github.com/Bryantcx-png/Inventory-Management" target="_blank" rel="noopener">GitHub repo<span class="sr-only"> (opens in a new tab)</span></a>
+              <a href="https://www.youtube.com/watch?v=Mby0-_QChaw" target="_blank" rel="noopener">Watch it live<span class="sr-only"> on YouTube (opens in a new tab)</span></a>
+            </p>
+          </article>
+
+          <article class="work" aria-labelledby="w-book" data-draw>
+            <figure class="polaroid" style="--tilt:-1.2deg">
+              <span class="tape tape--yellow" aria-hidden="true" style="--tr:-2deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of a spiral-bound sketchbook with a star on the page and a pencil beside it">
+                  <path class="y" d="M76 46 C 100 44, 120 47, 140 45"/>
+                  <path d="M58 16 C 90 14, 124 17, 152 15 C 154 50, 152 90, 154 124 C 122 126, 90 123, 56 125 C 57 90, 55 50, 58 16 Z"/>
+                  <path class="t" d="M52 26 C 46 26, 46 34, 52 34 L 64 33 M52 44 C 46 44, 46 52, 52 52 L 64 51 M52 62 C 46 62, 46 70, 52 70 L 64 69 M52 80 C 46 80, 46 88, 52 88 L 64 87 M52 98 C 46 98, 46 106, 52 106 L 64 105"/>
+                  <path class="t" d="M76 46 C 100 45, 122 47, 140 45 M76 62 C 96 61, 118 63, 136 61 M76 78 C 92 77, 104 79, 116 77"/>
+                  <path class="r" d="M122 88 L 126 97 L 136 97 L 128 103 L 131 112 L 122 106 L 113 112 L 116 103 L 108 97 L 118 97 Z"/>
+                  <path d="M150 124 L 182 62 L 192 67 L 160 129 Z"/>
+                  <path d="M150 124 L 148 136 L 160 129"/>
+                  <path class="t" d="M178 70 L 188 75"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-book">This Sketchbook</h3></figcaption>
+            </figure>
+            <p class="kind">Personal · web</p>
+            <p class="desc">My portfolio, redrawn as a spiral-bound sketchbook: one offline HTML file with hand-drawn SVG, a real page-curl you can peel by hand, and a pencil that leaves a trail.</p>
+            <p class="links"><a href="https://github.com/Bryantcx-png/bryantanportfolio" target="_blank" rel="noopener">GitHub repo<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+        </div>
+        <p class="folio" aria-hidden="true">— 2 —</p>
+      </div>
+    </section>
+
+    <!-- ======================= 3 · SELECTED WORK, CONT. ======================= -->
+    <section class="page" id="work-2" aria-labelledby="h-work2" data-title="Selected work, continued">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <header class="page-head" data-draw>
+          <h2 class="page-title" id="h-work2">Selected work, <span class="ul">cont.</span></h2>
+          <p class="page-sub">the paperwork I'm proudest of</p>
+        </header>
+
+        <svg class="ring" style="right:-26px; bottom:40px" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <g filter="url(#ringf)" fill="none">
+            <circle cx="60" cy="60" r="42" stroke="rgba(150,105,55,.2)" stroke-width="5"/>
+            <path d="M24 44 C 34 20, 80 14, 98 40" stroke="rgba(130,90,45,.26)" stroke-width="2.5"/>
+          </g>
+        </svg>
+
+        <div class="works">
+          <article class="work" aria-labelledby="w-dean" data-draw>
+            <figure class="polaroid" style="--tilt:2deg">
+              <span class="tape tape--dots" aria-hidden="true" style="--tr:4deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of a ribbon rosette with a star in the middle">
+                  <path class="y" d="M60 56 C 80 52, 120 58, 140 54"/>
+                  <path d="M100 20 C 119 19, 133 34, 132 52 C 131 71, 117 84, 99 83 C 80 82, 67 68, 68 51 C 69 33, 83 21, 102 21"/>
+                  <path class="t" d="M100 30 C 113 30, 122 40, 121 52 C 120 65, 111 73, 99 72 C 87 71, 79 62, 79 51 C 80 39, 89 31, 101 31"/>
+                  <path class="r" d="M100 38 L 104 47 L 114 47 L 106 53 L 109 63 L 100 57 L 91 63 L 94 53 L 86 47 L 96 47 Z"/>
+                  <path d="M86 80 L 74 124 L 85 116 L 93 127 L 99 84"/>
+                  <path d="M114 80 L 126 124 L 115 116 L 107 127 L 101 84"/>
+                  <path class="t" d="M40 34 L 40 50 M32 42 L 48 42 M160 30 L 160 44 M153 37 L 167 37 M156 96 L 164 104 M164 96 L 156 104"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-dean">Dean's List Award</h3></figcaption>
+            </figure>
+            <p class="kind">Award · Sunway University</p>
+            <p class="desc">Recognised for outstanding academic achievement and placed on the Dean's List at Sunway University.</p>
+          </article>
+
+          <article class="work" aria-labelledby="w-ccna" data-draw>
+            <figure class="polaroid" style="--tilt:-2deg">
+              <span class="tape tape--stripe" aria-hidden="true" style="--tr:-3deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of a router with antennas sending signals, linked to four network nodes">
+                  <path class="y" d="M60 94 C 90 90, 120 96, 148 91"/>
+                  <path d="M58 82 C 90 80, 120 83, 148 81 C 150 90, 149 98, 150 106 C 118 108, 88 105, 56 107 C 57 98, 56 90, 58 82 Z"/>
+                  <path d="M72 81 L 66 52 M134 81 L 140 52"/>
+                  <circle class="t" cx="72" cy="94" r="2.2"/>
+                  <circle class="t" cx="82" cy="94" r="2.2"/>
+                  <circle class="r" cx="92" cy="94" r="2.2"/>
+                  <path class="t" d="M112 91 L 120 91 L 120 98 L 112 98 Z M126 91 L 134 91 L 134 98 L 126 98 Z"/>
+                  <path class="r" d="M58 46 C 60 40, 68 38, 74 42 M52 40 C 56 30, 70 26, 80 34"/>
+                  <path class="r" d="M148 46 C 146 40, 138 38, 132 42 M154 40 C 150 30, 136 26, 126 34"/>
+                  <circle cx="24" cy="26" r="8"/>
+                  <circle cx="178" cy="24" r="8"/>
+                  <circle cx="22" cy="118" r="8"/>
+                  <circle cx="180" cy="120" r="8"/>
+                  <path class="t" d="M31 30 C 42 40, 50 56, 58 84 M171 28 C 162 40, 154 60, 148 84 M29 114 C 38 110, 46 106, 56 102 M173 116 C 164 112, 156 106, 150 102"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-ccna">CCNA: Introduction to Networks</h3></figcaption>
+            </figure>
+            <p class="kind">Certificate · Cisco Networking Academy</p>
+            <p class="desc">Completed the CCNA: Introduction to Networks course under the Cisco Networking Academy, offered through Sunway University.</p>
+          </article>
+
+          <article class="work" aria-labelledby="w-jc" data-draw>
+            <figure class="polaroid" style="--tilt:1.4deg">
+              <span class="tape tape--yellow" aria-hidden="true" style="--tr:2deg"></span>
+              <div class="photo">
+                <svg class="ink" viewBox="0 0 200 140" role="img" aria-label="Doodle of a graduation cap with a tassel above an open book">
+                  <path class="y" d="M44 116 C 80 110, 120 118, 158 111"/>
+                  <path d="M30 100 C 58 90, 86 93, 100 104 C 114 93, 142 90, 170 100 L 170 124 C 142 114, 114 117, 100 128 C 86 117, 58 114, 30 124 Z"/>
+                  <path d="M100 104 L 100 128"/>
+                  <path class="t" d="M44 104 C 58 100, 72 100, 86 104 M114 104 C 128 100, 142 100, 156 104"/>
+                  <path d="M58 44 L 100 26 L 144 44 L 100 62 Z"/>
+                  <path d="M76 52 L 76 72 C 90 80, 112 80, 126 72 L 126 52"/>
+                  <path class="r" d="M100 44 C 118 46, 136 48, 140 56 L 140 76 M136 76 L 140 88 L 145 76 Z"/>
+                </svg>
+              </div>
+              <figcaption><h3 id="w-jc">Jeffrey Cheah Scholarships</h3></figcaption>
+            </figure>
+            <p class="kind">Scholarships · Sunway</p>
+            <p class="desc">Awarded the Jeffrey Cheah ACE Scholarship for my degree at Sunway University, following the Jeffrey Cheah Entrance Scholarship at Sunway College.</p>
+          </article>
+        </div>
+        <p class="folio" aria-hidden="true">— 3 —</p>
+      </div>
+    </section>
+
+    <!-- ======================= 4 · PROCESS ======================= -->
+    <section class="page" id="process" aria-labelledby="h-process" data-title="Process scribbles">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <div class="process">
+          <div>
+            <header class="page-head" data-draw>
+              <h2 class="page-title" id="h-process">Process <span class="ul">scribbles</span></h2>
+              <p class="page-sub">how an idea usually turns into something that runs</p>
+            </header>
+            <ol class="steps" data-draw>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path d="M24 4 C 36 3, 43 12, 42 24 C 41 36, 32 43, 21 42 C 10 41, 3 32, 4 21 C 5 11, 14 5, 27 6"/></svg>1</span>
+                <div><h3>Sketch it</h3><p>Rough the screens out in Figma before writing a single line of code.</p></div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path d="M22 5 C 34 4, 42 13, 41 24 C 40 35, 31 42, 20 41 C 9 40, 4 31, 5 21 C 6 12, 15 5, 26 7"/></svg>2</span>
+                <div><h3>Give it bones</h3><p>Structured, accessible HTML so every page stands on a solid foundation.</p></div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path d="M25 5 C 37 5, 43 14, 41 25 C 39 36, 30 42, 20 41 C 10 40, 4 30, 5 20 C 7 11, 16 4, 28 7"/></svg>3</span>
+                <div><h3>Dress it up</h3><p>CSS for responsive layouts and modern visual touches that hold up on any screen.</p></div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path class="r" d="M23 4 C 35 4, 42 12, 42 23 C 42 35, 33 42, 22 42 C 11 42, 4 33, 4 22 C 4 11, 13 5, 26 6"/></svg>4</span>
+                <div><h3>Make it think</h3><p>JavaScript for interactivity; Java or Python with clean, modular OOP for the heavy lifting.</p></div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path d="M24 5 C 35 4, 42 12, 41 23 C 40 35, 31 42, 21 41 C 10 40, 4 32, 5 21 C 6 11, 15 5, 27 7"/></svg>5</span>
+                <div><h3>Remember things</h3><p>Database-driven features and tidy data with Oracle APEX and SQL.</p></div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true"><svg class="ink" viewBox="0 0 46 46"><path d="M22 4 C 34 4, 42 13, 41 24 C 40 35, 31 42, 21 41 C 10 40, 4 31, 5 21 C 6 11, 14 5, 26 6"/></svg>6</span>
+                <div><h3>Ship &amp; share</h3><p>Version it on GitHub, collaborate, then keep iterating.</p></div>
+              </li>
+            </ol>
+            <div data-draw>
+              <svg class="ink doodle process__art process__art--steps" viewBox="0 0 120 80" aria-hidden="true" focusable="false">
+                <path class="y" d="M14 60 C 40 56, 80 62, 106 57"/>
+                <path d="M12 58 L 88 14 L 96 26 L 20 70 Z"/>
+                <path d="M88 14 L 104 6 L 96 26"/>
+                <path class="r" d="M12 58 L 6 74 L 20 70"/>
+                <path class="t" d="M30 48 L 36 58 M46 38 L 52 48 M62 29 L 68 39"/>
+              </svg>
+            </div>
+          </div>
+
+          <aside class="toolbox" aria-labelledby="h-tools">
+            <h3 class="toolbox-title" id="h-tools">my toolbox <span aria-hidden="true">✎</span></h3>
+            <div class="stack">
+              <div class="sticky" style="--tilt:-2deg" data-draw>
+                <h4>Languages &amp; Frameworks</h4>
+                <ul class="chips" role="list">
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 38 C 14 44, 22 36, 22 28 C 22 20, 30 14, 37 18"/><path d="M37 18 C 41 15, 45 19, 41 23 C 39 25, 35 23, 37 18 Z"/><circle class="t" cx="39.5" cy="19.5" r="1"/><path class="r t" d="M43 22 L 46.5 21 M43 22 L 46 24.5"/></svg>Python</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M10 22 L 12 37 C 13 42, 29 42, 30 37 L 32 22 C 25 24, 17 24, 10 22 Z"/><path d="M31.5 26 C 40 24.5, 40.5 35, 30.5 34"/><path class="r t" d="M17 17 C 14 13, 20 11, 17 5 M25 17 C 22 13, 28 11, 25 5"/><path class="t" d="M5 44 C 16 46, 28 46, 38 44"/></svg>Java</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M18 7 C 12 7, 14 16, 13 20 C 12 23, 10 24, 7 24 C 10 24, 12 25, 13 28 C 14 32, 12 41, 18 41"/><path d="M30 7 C 36 7, 34 16, 35 20 C 36 23, 38 24, 41 24 C 38 24, 36 25, 35 28 C 34 32, 36 41, 30 41"/><circle class="r" cx="24" cy="24" r="2.2"/></svg>JavaScript</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M15 12 L 5 24 L 15.5 36"/><path d="M33 12 L 43 24 L 32.5 36"/><path class="r" d="M28 9 L 20 39"/></svg>HTML</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M41 5 C 38 10, 30 18, 26 22"/><path d="M21.5 20.5 L 27.5 26.5"/><path d="M21.5 20.5 C 14 22, 10 30, 8 38 C 16 37, 24 34, 27.5 26.5"/><path class="r" d="M5 44 C 16 40, 28 45, 43 41"/></svg>CSS</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M10 12 C 10 6, 38 6, 38 12 C 38 18, 10 18, 10 12 Z"/><path d="M10 12 L 10 36 C 10 42, 38 42, 38 36 L 38 12"/><path class="t" d="M10 20.5 C 10 26.5, 38 26.5, 38 20.5 M10 28.5 C 10 34.5, 38 34.5, 38 28.5"/></svg>SQL</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 31 C 11 15, 31 8, 42 16 C 36 16, 30 20, 26 26 C 20 30, 12 32, 5 31 Z"/><path d="M22 14 L 25 7 L 29 12"/><path d="M5 31 L 2 25.5 M5 31 L 1.5 35"/><circle class="t" cx="36" cy="16.5" r="1"/><path class="r" d="M4 42 C 12 39, 20 45, 28 42 S 40 39, 45 42"/></svg>MySQL</li>
+                </ul>
+              </div>
+              <div class="sticky sticky--pale" style="--tilt:1.5deg" data-draw>
+                <h4>Core Competencies</h4>
+                <p class="dots-list">Full-Stack Development · Database Design &amp; SQL · Version Control (Git) · Agile/Scrum Collaboration · Problem Solving</p>
+              </div>
+              <div class="sticky" style="--tilt:-1deg" data-draw>
+                <h4>Tools &amp; Platforms</h4>
+                <ul class="chips" role="list">
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="4"/><circle cx="12" cy="39" r="4"/><circle cx="36" cy="18" r="4"/><path d="M12 13 L 12 35"/><path class="r" d="M12 32 C 12 24, 36 30, 36 22"/></svg>Git</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M10 19 L 11.5 6 L 20 13.5 C 22.5 12.8, 25.5 12.8, 28 13.5 L 36.5 6 L 38 19 C 42 27, 38 39, 24 39 C 10 39, 6 27, 10 19 Z"/><circle class="t" cx="18" cy="25" r="1.6"/><circle class="t" cx="30" cy="25" r="1.6"/><path class="r t" d="M22 30.5 L 26 30.5 L 24 33 Z"/><path class="t" d="M3 28 L 12 29.5 M3 34 L 12 32.5 M45 28 L 36 29.5 M45 34 L 36 32.5"/></svg>GitHub</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 5 C 35 5, 43 13, 43 24 C 43 35, 35 43, 24 43 C 13 43, 5 35, 5 24 C 5 13, 13 5, 25 5.5"/><path class="r" d="M19.5 15.5 L 33 24 L 19.5 32.5 Z"/></svg>GitHub Actions</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 4 C 28 12, 37 16, 37 28 C 37 37, 31 43, 24 43 C 17 43, 11 37, 11 28 C 11 22, 15 18, 18 13 C 19 19, 21 22, 23.5 22.5 C 22 16, 21 10, 24 4 Z"/><path class="r" d="M24 40 C 20 40, 18 36, 19 32 C 20 28, 23 27, 24 23.5 C 26.5 28, 30 30, 29 34.5 C 28 38, 26 40, 24 40 Z"/></svg>Firebase</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 9 C 18 8.5, 30 9.5, 42 9 L 42.5 39 C 30 39.5, 18 38.5, 5.5 39 Z"/><path class="t" d="M6 16 C 18 15.5, 30 16.5, 42 16"/><path class="r" d="M13 22 L 19.5 27 L 13 32"/><path d="M23 32.5 L 33 32.5"/></svg>VS Code</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 8 C 18 7.5, 30 8.5, 40 8 L 40.5 40 C 30 40.5, 18 39.5, 7.5 40 Z"/><path d="M13 34.5 L 24 34.5"/><path class="r" d="M13 24 C 17 17, 21 28, 25 22 C 27 19, 31 18.5, 34 21"/></svg>PyCharm</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 C 32 6, 37 12, 37 19 C 37 25, 31 28, 30 33 L 18 33 C 17 28, 11 25, 11 19 C 11 12, 16 6, 24 6 Z"/><path d="M18 37.5 L 30 37.5 M20 42 L 28 42"/><path class="r t" d="M3 18 L 7 18 M41 18 L 45 18 M8 5 L 11 8 M40 5 L 37 8"/></svg>IntelliJ IDEA</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6 C 36 6, 43 14, 42 23 C 41 30, 34 30, 31 29 C 28 28, 26 31, 28 35 C 30 40, 26 43, 22 42 C 12 41, 6 33, 6 24 C 6 14, 13 6, 24 6 Z"/><circle class="t" cx="15" cy="20" r="2.6"/><circle class="t" cx="22" cy="13" r="2.6"/><circle class="r t" cx="32" cy="15" r="2.6"/><circle class="t" cx="14" cy="30" r="2.6"/></svg>Canva</li>
+                  <li><svg class="ink ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M10 7 L 30 7 L 38 15 L 38 42 L 10 42 Z"/><path class="t" d="M30 7 L 30 15 L 38 15"/><path class="t" d="M16 23 L 32 23 M16 29 L 32 29"/><path class="r t" d="M16 35 L 26 35"/></svg>Microsoft Office Suite</li>
+                </ul>
+              </div>
+              <div class="sticky sticky--pale" style="--tilt:1.8deg" data-draw>
+                <h4>Certifications</h4>
+                <ul class="certs">
+                  <li>CCNA: Introduction to Networks <span>(Cisco, 2025)</span></li>
+                  <li>Introduction to Cybersecurity <span>(Cisco, 2026)</span></li>
+                  <li>Introduction to Modern AI <span>(Cisco, 2026)</span></li>
+                  <li>Claude Code in Action <span>(Anthropic, 2026)</span></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <svg class="ring" style="left:40px; bottom:-40px" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <g filter="url(#ringf)" fill="none">
+            <circle cx="60" cy="60" r="43" stroke="rgba(150,105,55,.22)" stroke-width="5.5"/>
+            <circle cx="60" cy="60" r="39" stroke="rgba(150,105,55,.12)" stroke-width="1.5"/>
+          </g>
+        </svg>
+        <p class="folio" aria-hidden="true">— 4 —</p>
+      </div>
+    </section>
+
+    <!-- ======================= 5 · JOURNEY ======================= -->
+    <section class="page" id="journey" aria-labelledby="h-journey" data-title="The route so far">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <header class="page-head" data-draw>
+          <h2 class="page-title" id="h-journey">The route <span class="ul">so far</span></h2>
+          <p class="page-sub">a map of the schools that got me here</p>
+        </header>
+
+        <svg class="ink margin-doodle doodle" style="right:44px; top:30px; width:40px" viewBox="0 0 60 60" aria-hidden="true" focusable="false" data-draw>
+          <path d="M30 5 L 36.5 23 L 55 23.5 L 40.5 35 L 46 54 L 30 43 L 13.5 54.5 L 19.5 35.5 L 5 24 L 23.5 23 Z"/>
+        </svg>
+
+        <div class="journey" data-draw>
+          <svg class="ink route-line" viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="y" d="M300 36 C 340 30, 380 40, 420 34"/>
+            <path d="M6 52 C 40 20, 70 34, 100 34 S 160 64, 200 50 S 260 20, 300 34 S 360 66, 410 52 S 470 24, 500 34 S 560 50, 592 20"/>
+            <path class="r" d="M580 16 L 593 19 L 588 31"/>
+          </svg>
+          <ol class="stops">
+            <li class="stop">
+              <svg class="ink pin" viewBox="0 0 30 40" aria-hidden="true" focusable="false"><path d="M15 38 C 6 26, 3 20, 3 14 C 3 7, 8 2, 15 2 C 22 2, 27 7, 27 14 C 27 20, 24 26, 15 38 Z"/><circle cx="15" cy="14" r="4"/></svg>
+              <div class="stop-card" style="--tilt:-1.5deg">
+                <p class="stop-years">2018 – 2023</p>
+                <h3>Chung Ling High School</h3>
+                <ul>
+                  <li>Subjects incl. Physics, Chemistry, Biology &amp; Additional Maths</li>
+                  <li>Computer Club, JCI Club, St John Ambulance</li>
+                  <li>A solid academic foundation and busy co-curricular life</li>
+                </ul>
+              </div>
+            </li>
+            <li class="stop">
+              <svg class="ink pin" viewBox="0 0 30 40" aria-hidden="true" focusable="false"><path d="M15 38 C 6 26, 3 20, 3 14 C 3 7, 8 2, 15 2 C 22 2, 27 7, 27 14 C 27 20, 24 26, 15 38 Z"/><circle cx="15" cy="14" r="4"/></svg>
+              <div class="stop-card" style="--tilt:1.2deg">
+                <p class="stop-years">2023 – 2024</p>
+                <h3>Sunway College</h3>
+                <ul>
+                  <li>Pre-university studies</li>
+                  <li>Jeffrey Cheah Entrance Scholarship</li>
+                  <li>CGPA <mark class="hl">3.94</mark></li>
+                </ul>
+              </div>
+            </li>
+            <li class="stop">
+              <svg class="ink pin" viewBox="0 0 30 40" aria-hidden="true" focusable="false"><path class="r" d="M15 38 C 6 26, 3 20, 3 14 C 3 7, 8 2, 15 2 C 22 2, 27 7, 27 14 C 27 20, 24 26, 15 38 Z"/><circle class="r" cx="15" cy="14" r="4"/></svg>
+              <div class="stop-card" style="--tilt:-.8deg">
+                <p class="stop-years">2023 – now</p>
+                <h3>Sunway University</h3>
+                <ul>
+                  <li>Software Engineering degree</li>
+                  <li>Operating Systems, Web Development, OOP, Database Fundamentals</li>
+                  <li>CGPA <mark class="hl">3.8</mark> so far · Jeffrey Cheah ACE Scholarship</li>
+                </ul>
+              </div>
+              <p class="here">↑ you are here</p>
+            </li>
+          </ol>
+          <div class="sticky next-stop" style="--tilt:2.5deg">
+            <p>next stop: <a href="#contact">your team?</a> →</p>
+          </div>
+        </div>
+        <p class="folio" aria-hidden="true">— 5 —</p>
+      </div>
+    </section>
+
+    <!-- ======================= 6 · CONTACT ======================= -->
+    <section class="page" id="contact" aria-labelledby="h-contact" data-title="Write to me">
+      <svg class="coil coil--page" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#coil)"/></svg>
+      <div class="page__inner">
+        <div class="contact">
+          <div class="contact__text">
+            <header class="page-head" data-draw>
+              <h2 class="page-title" id="h-contact">Write to <span class="ul">me</span></h2>
+            </header>
+            <p data-draw>Thanks for flipping all the way to the back. If you have a role, a project or a question where a curious, hard-working <mark class="hl">software engineering student</mark> could help, I'd love to hear about it.</p>
+            <div class="sticky sticky--pale contact__ps" style="--tilt:2deg; margin-top:22px">
+              <p><strong>P.S.</strong> I'm based in Selangor, Malaysia. Hover over, tab to or tap the envelope to read the letter inside.</p>
+            </div>
+            <svg class="ink doodle" style="width:90px; margin:14px 0 0 40%" viewBox="0 0 140 80" aria-hidden="true" focusable="false" data-draw>
+              <path d="M6 20 C 40 4, 80 10, 96 34 C 104 46, 110 56, 124 62"/>
+              <path d="M110 64 L 126 63 L 120 48"/>
+            </svg>
+          </div>
+
+          <div class="env-wrap">
+            <div class="envelope" id="envelope">
+              <div class="env-back"></div>
+
+              <div class="letter" id="letter">
+                <p class="letter-hi">Dear reader,</p>
+                <p>the kettle's on — write to me at</p>
+                <p class="letter-mail">
+                  <a id="email" href="mailto:productivebryan@gmail.com">productivebryan@gmail.com</a>
+                  <button class="copy-btn" id="copy-email" type="button" aria-describedby="copy-status">copy</button>
+                </p>
+                <p>or find me on
+                  <a href="https://www.linkedin.com/in/bryan-tan-chun-xing-3798aa27a/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>,
+                  <a href="https://github.com/Bryantcx-png" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a> &amp;
+                  <a href="https://www.instagram.com/itsreallybryan/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a>
+                </p>
+                <p class="letter-sign">— Bryan</p>
+              </div>
+
+              <div class="env-pocket" aria-hidden="true">
+                <svg class="folds" viewBox="0 0 160 100" preserveAspectRatio="none"><path d="M0.5 0.5 L 80 54 L 159.5 0.5"/><path d="M0.5 99.5 L 66 50"/><path d="M159.5 99.5 L 94 50"/></svg>
+                <p class="env-address"><span class="to">to: whoever turned all these pages</span><span>from Bryan Tan Chun Xing</span><span>Selangor, Malaysia</span></p>
+                <div class="stamp">
+                  <div class="stamp-face">
+                    <svg class="ink" viewBox="0 0 60 60"><path class="r" d="M30 30 c -10 -14, 8 -20, 0 0 c 16 -6, 18 12, 0 0 c 12 10, -2 22, 0 0 c -6 16, -20 6, 0 0 c -18 2, -14 -16, 0 0"/><path d="M30 30 L 42 14"/></svg>
+                    <span>air mail</span>
+                  </div>
+                </div>
+                <svg class="postmark" viewBox="0 0 120 70">
+                  <circle cx="34" cy="35" r="27"/>
+                  <circle cx="34" cy="35" r="21"/>
+                  <text x="34" y="32" text-anchor="middle">SUNWAY</text>
+                  <text x="34" y="44" text-anchor="middle" style="font-size:6.5px">SELANGOR</text>
+                  <path d="M64 22 c 8 -5 14 5 22 0 s 14 5 22 0 M64 35 c 8 -5 14 5 22 0 s 14 5 22 0 M64 48 c 8 -5 14 5 22 0 s 14 5 22 0"/>
+                </svg>
+              </div>
+
+              <div class="env-flap" aria-hidden="true">
+                <svg class="folds" viewBox="0 0 160 58" preserveAspectRatio="none"><path d="M0.5 0.5 L 80 57 L 159.5 0.5"/></svg>
+                <svg class="seal ink" viewBox="0 0 34 30"><path class="r" d="M17 27 C 6 19, 2 13, 3 8 C 4 3, 10 1, 14 4 C 15.5 5, 16.5 6.5, 17 8 C 18 5, 21 2, 25 2.5 C 30 3, 32 8, 30 12 C 28 17, 23 22, 17 27 Z"/></svg>
+              </div>
+
+              <button class="env-toggle" type="button" aria-expanded="false" aria-controls="letter">
+                <span class="sr-only">Open the envelope and read the letter</span>
+              </button>
+            </div>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="folio" aria-hidden="true">— 6 —</p>
+      </div>
+    </section>
+
+    <!-- Page-curl layers (desktop) -->
+    <div class="cast-clip" aria-hidden="true" hidden><div class="strip cast"></div></div>
+    <div class="flap-wrap" aria-hidden="true" hidden><div class="flap"><div class="strip sheen"></div></div></div>
+    <button class="corner" type="button" aria-label="Turn to the next page"></button>
+    <div class="grab-top" aria-hidden="true"></div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl" id="prev" type="button" aria-label="Previous page">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12.5 C 14 12, 9 12.4, 5 12"/><path d="M10 6.5 L 4.5 12 L 10.5 17.5"/></svg>
+    </button>
+    <p class="counter" id="counter" aria-hidden="true">1 / 6</p>
+    <button class="ctrl" id="next" type="button" aria-label="Next page">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11.5 C 10 12, 15 11.6, 19 12"/><path d="M14 6.5 L 19.5 12 L 13.5 17.5"/></svg>
+    </button>
+    <p class="hint">Drag the page corner, use ← → / Page Up · Down / Home · End, or tap an index tab.</p>
+  </div>
+  <p class="sr-only" id="announce" aria-live="polite"></p>
+</main>
+
+<footer class="foot">
+  <p>© <span id="year">2026</span> Bryan Tan Chun Xing · hand-drawn in a single HTML file</p>
+</footer>
+
+<canvas id="trail" aria-hidden="true"></canvas>
+
+<script>
+(function () {
+  'use strict';
+
+  var doc = document;
+  var $ = function (s, r) { return (r || doc).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var SHAPES = ['path', 'line', 'polyline', 'polygon', 'circle', 'ellipse', 'rect'];
+
+  function mq(q) {
+    var m = window.matchMedia ? window.matchMedia(q) : { matches: false };
+    m.on = function (fn) {
+      if (m.addEventListener) m.addEventListener('change', fn);
+      else if (m.addListener) m.addListener(fn);
+    };
+    return m;
+  }
+  var mqBook = mq('(min-width: 861px)');
+  var mqRM = mq('(prefers-reduced-motion: reduce)');
+  var mqHover = mq('(hover: hover)');
+  function reduced() { return mqRM.matches; }
+
+  var store = {
+    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } }
+  };
+  var STORE_KEY = 'bryan-sketchbook:page';
+
+  var yearEl = $('#year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ------------------------------------------------------------
+     Ink: red underlines, wobble groups, pathLength, stagger
+     ------------------------------------------------------------ */
+  var UL_MARK = '<svg class="ink ul-mark" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true" focusable="false">' +
+    '<path d="M1 7.5 C 16 4, 30 9.5, 48 6.5 S 80 4.5, 99 7"/></svg>';
+  $$('.ul').forEach(function (el) { el.insertAdjacentHTML('beforeend', UL_MARK); });
+
+  $$('svg.ink').forEach(function (svg) {
+    var g = doc.createElementNS(SVGNS, 'g');
+    g.setAttribute('class', 'wob');
+    while (svg.firstChild) g.appendChild(svg.firstChild);
+    svg.appendChild(g);
+    $$(SHAPES.join(','), svg).forEach(function (s) { s.setAttribute('pathLength', '1'); });
+  });
+
+  var STAGGER_SEL = SHAPES.map(function (s) { return 'svg.ink ' + s; }).join(',') + ',.hl';
+  $$('[data-draw]').forEach(function (block) {
+    var items = block.matches('svg.ink') ? $$(SHAPES.join(','), block) : $$(STAGGER_SEL, block);
+    items.forEach(function (el, i) { el.style.setProperty('--d', Math.min(i * 70, 1600) + 'ms'); });
+  });
+  doc.documentElement.classList.add('ink-ready');
+
+  function draw(el) { el.classList.add('is-drawn'); }
+  function drawAll() { $$('[data-draw]').forEach(draw); }
+  function drawPage(page) {
+    if (page.matches('[data-draw]')) draw(page);
+    $$('[data-draw]', page).forEach(draw);
+  }
+
+  var io = null;
+  function observeDrawings() {
+    if (io) return;
+    if (reduced() || !('IntersectionObserver' in window)) { drawAll(); return; }
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { draw(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+    $$('[data-draw]:not(.is-drawn)').forEach(function (el) { io.observe(el); });
+  }
+  function unobserveDrawings() { if (io) { io.disconnect(); io = null; } }
+
+  /* ------------------------------------------------------------
+     The book
+     ------------------------------------------------------------ */
+  var book = $('#book');
+  var pages = $$('.page', book);
+  var N = pages.length;
+  var tabs = $$('.tab', book);
+  var corner = $('.corner', book);
+  var grabTop = $('.grab-top', book);
+  var castClip = $('.cast-clip', book);
+  var cast = $('.cast', book);
+  var flapWrap = $('.flap-wrap', book);
+  var flap = $('.flap', book);
+  var sheen = $('.sheen', book);
+  var foldShade = doc.createElement('div');
+  foldShade.className = 'strip fold-shade';
+  foldShade.setAttribute('aria-hidden', 'true');
+  var prevBtn = $('#prev');
+  var nextBtn = $('#next');
+  var counter = $('#counter');
+  var announcer = $('#announce');
+
+  var mode = null;       // 'book' | 'scroll'
+  var cur = 0;
+  var W = 0, H = 0, DIAG = 0;
+  var turn = null;       // { ti, ui, t, u, C, P, peek }
+  var anim = 0, animDone = null;
+  var drag = null;
+  var suppressClickUntil = 0;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function ease(k) { return k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+
+  function measure() {
+    var r = book.getBoundingClientRect();
+    W = r.width; H = r.height; DIAG = Math.hypot(W, H);
+    var L = Math.ceil(DIAG * 3) + 'px';
+    sheen.style.width = L; cast.style.width = L; foldShade.style.width = L;
+  }
+
+  function setInert(p, on) {
+    if (on) { p.setAttribute('inert', ''); p.setAttribute('aria-hidden', 'true'); }
+    else { p.removeAttribute('inert'); p.removeAttribute('aria-hidden'); }
+  }
+
+  function updateUI() {
+    var inBook = mode === 'book';
+    prevBtn.disabled = !inBook || cur === 0;
+    nextBtn.disabled = !inBook || cur === N - 1;
+    counter.textContent = (cur + 1) + ' / ' + N;
+    book.classList.toggle('at-end', cur === N - 1);
+    tabs.forEach(function (t) {
+      var a = +t.dataset.page, b = t.dataset.last ? +t.dataset.last : a;
+      var on = inBook && cur >= a && cur <= b;
+      if (on) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
+    });
+  }
+
+  function setStatic() {
+    pages.forEach(function (p, i) {
+      var on = i === cur;
+      p.classList.toggle('is-current', on);
+      p.classList.remove('is-under', 'is-turning');
+      p.style.clipPath = '';
+      setInert(p, !on);
+    });
+    drawPage(pages[cur]);
+    updateUI();
+  }
+
+  /* --- geometry ---------------------------------------------- */
+  // Keep points where f(X) <= 0 (one Sutherland–Hodgman pass against a half-plane).
+  function clipHalf(poly, f) {
+    var out = [];
+    for (var i = 0; i < poly.length; i++) {
+      var A = poly[i], B = poly[(i + 1) % poly.length];
+      var fa = f(A), fb = f(B);
+      if (fa <= 0) out.push(A);
+      if ((fa < 0 && fb > 0) || (fa > 0 && fb < 0)) {
+        var t = fa / (fa - fb);
+        out.push({ x: A.x + (B.x - A.x) * t, y: A.y + (B.y - A.y) * t });
+      }
+    }
+    return out;
+  }
+  function polyCSS(pts) {
+    if (pts.length < 3) return 'polygon(0 0, 0 0, 0 0)';
+    return 'polygon(' + pts.map(function (p) { return p.x.toFixed(2) + 'px ' + p.y.toFixed(2) + 'px'; }).join(',') + ')';
+  }
+  function toCircle(P, c, r) {
+    var dx = P.x - c.x, dy = P.y - c.y, d = Math.hypot(dx, dy);
+    return d > r ? { x: c.x + dx / d * r, y: c.y + dy / d * r } : P;
+  }
+  // Paper can't stretch: the corner stays within W of the spine point on its own
+  // edge, and within the page diagonal of the opposite spine point.
+  function constrain(P, C) {
+    P = toCircle(P, { x: 0, y: C.y }, W);
+    return toCircle(P, { x: 0, y: H - C.y }, DIAG);
+  }
+  function placeStrip(el, M, phi, h) {
+    el.style.height = h.toFixed(1) + 'px';
+    el.style.transform = 'translate(' + M.x.toFixed(2) + 'px,' + M.y.toFixed(2) + 'px) rotate(' + phi.toFixed(4) + 'rad) translateX(-50%)';
+  }
+
+  function renderTurn(Pin) {
+    var C = turn.C;
+    var P = constrain(Pin, C);
+    turn.P = P;
+    var dx = C.x - P.x, dy = C.y - P.y, d = Math.hypot(dx, dy);
+    if (d < 0.5) {
+      turn.t.style.clipPath = '';
+      flap.style.visibility = 'hidden';
+      cast.style.opacity = '0'; foldShade.style.opacity = '0';
+      return;
+    }
+    // Fold line = perpendicular bisector of corner C and pointer P.
+    var n = { x: dx / d, y: dy / d };
+    var M = { x: (C.x + P.x) / 2, y: (C.y + P.y) / 2 };
+    var f = function (X) { return (X.x - M.x) * n.x + (X.y - M.y) * n.y; };
+    var rect = [{ x: 0, y: 0 }, { x: W, y: 0 }, { x: W, y: H }, { x: 0, y: H }];
+    var keep = clipHalf(rect, f);
+    var peel = clipHalf(rect, function (X) { return -f(X); });
+
+    turn.t.style.clipPath = polyCSS(keep);
+
+    // Paper back: mirror across the fold (reflection matrix), clipped to the peeled region.
+    var k = M.x * n.x + M.y * n.y;
+    flap.style.clipPath = polyCSS(peel);
+    flap.style.transform = 'matrix(' + [
+      1 - 2 * n.x * n.x, -2 * n.x * n.y, -2 * n.x * n.y, 1 - 2 * n.y * n.y, 2 * k * n.x, 2 * k * n.y
+    ].map(function (v) { return v.toFixed(5); }).join(',') + ')';
+    flap.style.visibility = 'visible';
+
+    var phi = Math.atan2(-n.x, n.y);
+    var depth = d / 2;
+    var prog = clamp((W - P.x) / (2 * W), 0, 1);
+    var fade = clamp((1 - prog) / 0.28, 0, 1);
+    var lift = Math.min(1, depth / 40);
+
+    placeStrip(sheen, M, phi, Math.max(depth, 1));
+    placeStrip(cast, M, phi, Math.min(depth * 0.9 + 10, 130));
+    placeStrip(foldShade, M, phi + Math.PI, Math.min(depth * 0.5 + 6, 64));
+    flapWrap.style.opacity = fade.toFixed(3);
+    cast.style.opacity = (lift * (0.35 + 0.65 * fade)).toFixed(3);
+    foldShade.style.opacity = lift.toFixed(3);
+  }
+
+  /* --- turn lifecycle ---------------------------------------- */
+  function beginTurn(ti, ui, whichCorner) {
+    measure();
+    var C = { x: W, y: whichCorner === 'top' ? 0 : H };
+    turn = { ti: ti, ui: ui, t: pages[ti], u: pages[ui], C: C, P: { x: C.x, y: C.y }, peek: false };
+    pages.forEach(function (p) { p.classList.remove('is-current', 'is-under', 'is-turning'); });
+    turn.t.classList.add('is-turning');
+    turn.u.classList.add('is-under');
+    turn.t.appendChild(foldShade);
+    book.classList.add('is-turning');
+    castClip.hidden = false;
+    flapWrap.hidden = false;
+    drawPage(turn.u);
+    drawPage(turn.t);
+    renderTurn(turn.P);
+  }
+
+  function cleanupTurn() {
+    if (!turn) return;
+    turn.t.style.clipPath = '';
+    if (foldShade.parentNode) foldShade.parentNode.removeChild(foldShade);
+    flap.style.visibility = 'hidden';
+    castClip.hidden = true;
+    flapWrap.hidden = true;
+    book.classList.remove('is-turning');
+    turn = null;
+  }
+
+  function finishTurn(newCur) {
+    var changed = newCur !== cur;
+    cur = newCur;
+    cleanupTurn();
+    setStatic();
+    if (changed) {
+      store.set(STORE_KEY, String(cur));
+      announcer.textContent = 'Page ' + (cur + 1) + ' of ' + N + ': ' + pages[cur].dataset.title;
+      try { history.replaceState(null, '', '#' + pages[cur].id); } catch (e) { /* file:// may refuse */ }
+    }
+  }
+
+  function abortTurn() { cancelAnim(); cleanupTurn(); setStatic(); }
+
+  function cancelAnim() { if (anim) cancelAnimationFrame(anim); anim = 0; animDone = null; }
+  function finishNow() {
+    if (!anim) return;
+    cancelAnimationFrame(anim); anim = 0;
+    var d = animDone; animDone = null;
+    if (d) d();
+  }
+
+  function runTo(to, dur, lift, done) {
+    cancelAnim();
+    var from = { x: turn.P.x, y: turn.P.y };
+    var dir = turn.C.y > H / 2 ? -1 : 1;
+    if (reduced() || doc.hidden || dur <= 0) { renderTurn(to); done(); return; }
+    var t0 = performance.now();
+    animDone = done;
+    var tick = function (now) {
+      if (!turn) { anim = 0; return; }
+      var k = Math.min(1, (now - t0) / dur), e = ease(k);
+      renderTurn({
+        x: from.x + (to.x - from.x) * e,
+        y: from.y + (to.y - from.y) * e + dir * lift * Math.sin(Math.PI * e)
+      });
+      if (k < 1) { anim = requestAnimationFrame(tick); }
+      else { anim = 0; var d = animDone; animDone = null; if (d) d(); }
+    };
+    anim = requestAnimationFrame(tick);
+  }
+
+  function settle() {
+    if (!turn) return;
+    if (turn.peek) abortTurn(); else finishNow();
+    if (turn) abortTurn();
+  }
+
+  function turnTo(target) {
+    target = clamp(target, 0, N - 1);
+    if (mode !== 'book') {
+      pages[target].scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+    if (drag) return;
+    settle();
+    if (target === cur) return;
+    if (target > cur) {
+      beginTurn(cur, target, 'bottom');
+      runTo({ x: -W, y: H }, 950, H * 0.22, function () { finishTurn(target); });
+    } else {
+      beginTurn(target, cur, 'bottom');
+      renderTurn({ x: -W, y: H });
+      runTo({ x: W, y: H }, 950, H * 0.22, function () { finishTurn(target); });
+    }
+  }
+  function step(d) { if (drag) return; settle(); turnTo(cur + d); }
+
+  function completeForward() {
+    var target = turn.ui;
+    var C = turn.C;
+    var dist = Math.hypot(turn.P.x + W, turn.P.y - C.y);
+    runTo({ x: -W, y: C.y }, 260 + 520 * dist / (2 * W), H * 0.1, function () { finishTurn(target); });
+  }
+  function fallBack() {
+    var C = turn.C;
+    var dist = Math.hypot(turn.P.x - C.x, turn.P.y - C.y);
+    runTo(C, 200 + 320 * dist / W, 0, function () { cleanupTurn(); setStatic(); });
+  }
+
+  /* --- pointer: peel by hand --------------------------------- */
+  function localPoint(e) {
+    var r = book.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+
+  function startDrag(e, which) {
+    if (mode !== 'book' || drag || cur >= N - 1) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    var P0;
+    if (turn && turn.peek && (which === 'top') === (turn.C.y === 0)) {
+      cancelAnim(); turn.peek = false; P0 = { x: turn.P.x, y: turn.P.y };
+    } else {
+      settle();
+      beginTurn(cur, cur + 1, which);
+      P0 = { x: turn.C.x, y: turn.C.y };
+    }
+    var s = localPoint(e);
+    drag = {
+      id: e.pointerId, el: e.currentTarget,
+      off: { x: P0.x - s.x, y: P0.y - s.y },
+      sx: e.clientX, sy: e.clientY, moved: false,
+      lx: e.clientX, lt: e.timeStamp, vx: 0,
+      pending: null, raf: 0
+    };
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    e.preventDefault();
+  }
+
+  function onDragMove(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (!drag.moved && Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) > 4) drag.moved = true;
+    var dt = e.timeStamp - drag.lt;
+    if (dt > 0) {
+      drag.vx = 0.7 * drag.vx + 0.3 * ((e.clientX - drag.lx) / dt);
+      drag.lx = e.clientX; drag.lt = e.timeStamp;
+    }
+    var s = localPoint(e);
+    drag.pending = { x: s.x + drag.off.x, y: s.y + drag.off.y };
+    if (!drag.raf) {
+      drag.raf = requestAnimationFrame(function () {
+        if (!drag) return;
+        drag.raf = 0;
+        if (drag.pending && turn) renderTurn(drag.pending);
+      });
+    }
+  }
+
+  function onDragEnd(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag; drag = null;
+    if (d.raf) cancelAnimationFrame(d.raf);
+    try { d.el.releasePointerCapture(d.id); } catch (err) { /* ignore */ }
+    suppressClickUntil = performance.now() + 450;
+    if (!turn) return;
+    if (d.pending) renderTurn(d.pending);
+    var cancelled = e.type !== 'pointerup';
+    if (!d.moved && !cancelled) { completeForward(); return; }
+    var flick = e.timeStamp - d.lt < 120 && d.vx < -0.6;
+    if (!cancelled && (turn.P.x < W * 0.55 || flick)) completeForward();
+    else fallBack();
+  }
+
+  function peekIn(e, which) {
+    if (e.pointerType !== 'mouse' || mode !== 'book' || reduced() || turn || drag || cur >= N - 1) return;
+    beginTurn(cur, cur + 1, which);
+    turn.peek = true;
+    var to = which === 'top' ? { x: W - 40, y: 30 } : { x: W - 44, y: H - 36 };
+    runTo(to, 240, 0, function () {});
+  }
+  function peekOut() {
+    if (!turn || !turn.peek || drag) return;
+    runTo(turn.C, 220, 0, function () { cleanupTurn(); setStatic(); });
+  }
+
+  [[corner, 'bottom'], [grabTop, 'top']].forEach(function (pair) {
+    var el = pair[0], which = pair[1];
+    el.addEventListener('pointerdown', function (e) { startDrag(e, which); });
+    el.addEventListener('pointermove', onDragMove);
+    el.addEventListener('pointerup', onDragEnd);
+    el.addEventListener('pointercancel', onDragEnd);
+    el.addEventListener('lostpointercapture', onDragEnd);
+    el.addEventListener('pointerenter', function (e) { peekIn(e, which); });
+    el.addEventListener('pointerleave', peekOut);
+  });
+
+  corner.addEventListener('click', function () {
+    if (performance.now() < suppressClickUntil) return;
+    if (turn && turn.peek) { turn.peek = false; completeForward(); }
+    else step(1);
+  });
+
+  prevBtn.addEventListener('click', function () { step(-1); });
+  nextBtn.addEventListener('click', function () { step(1); });
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { turnTo(+t.dataset.page); });
+  });
+
+  doc.addEventListener('keydown', function (e) {
+    if (mode !== 'book' || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'PageDown': e.preventDefault(); step(1); break;
+      case 'ArrowLeft': case 'PageUp': e.preventDefault(); step(-1); break;
+      case 'Home': e.preventDefault(); turnTo(0); break;
+      case 'End': e.preventDefault(); turnTo(N - 1); break;
+    }
+  });
+
+  function pageFromHash() {
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    for (var i = 0; i < N; i++) if (pages[i].id === id) return i;
+    return -1;
+  }
+  window.addEventListener('hashchange', function () {
+    var i = pageFromHash();
+    if (i >= 0 && mode === 'book') turnTo(i);
+  });
+
+  /* --- modes -------------------------------------------------- */
+  function applyMode() {
+    var m = mqBook.matches ? 'book' : 'scroll';
+    if (m === mode) return;
+    if (turn) abortTurn();
+    mode = m;
+    if (mode === 'book') {
+      unobserveDrawings();
+      measure();
+      setStatic();
+    } else {
+      pages.forEach(function (p) {
+        p.classList.remove('is-current', 'is-under', 'is-turning');
+        p.style.clipPath = '';
+        setInert(p, false);
+      });
+      observeDrawings();
+      updateUI();
+    }
+  }
+
+  var start = pageFromHash();
+  if (start < 0) {
+    var saved = parseInt(store.get(STORE_KEY), 10);
+    start = saved >= 0 && saved < N ? saved : 0;
+  }
+  cur = start;
+  applyMode();
+  if (reduced()) drawAll();
+
+  mqBook.on(applyMode);
+  mqRM.on(function () { if (reduced()) { drawAll(); clearTrail(); } });
+
+  var rz = 0;
+  window.addEventListener('resize', function () {
+    cancelAnimationFrame(rz);
+    rz = requestAnimationFrame(function () {
+      applyMode();
+      if (mode === 'book') { if (turn && !drag) settle(); measure(); }
+      sizeTrail();
+    });
+  });
+
+  /* ------------------------------------------------------------
+     Envelope
+     ------------------------------------------------------------ */
+  var env = $('#envelope');
+  var envBtn = $('.env-toggle', env);
+  var envLabel = $('.sr-only', envBtn);
+  function envIsOpen() {
+    if (env.classList.contains('is-open')) return true;
+    if (env.classList.contains('is-closed')) return false;
+    var hover = mqHover.matches && env.matches(':hover');
+    var kb = false;
+    try { kb = env.matches(':has(:focus-visible)'); } catch (e) { kb = env.contains(doc.activeElement); }
+    return hover || kb;
+  }
+  function syncEnv() {
+    var open = envIsOpen();
+    envBtn.setAttribute('aria-expanded', String(open));
+    envLabel.textContent = open ? 'Close the envelope' : 'Open the envelope and read the letter';
+  }
+  envBtn.addEventListener('click', function () {
+    var open = envIsOpen();
+    env.classList.toggle('is-open', !open);
+    env.classList.toggle('is-closed', open);
+    syncEnv();
+  });
+  env.addEventListener('pointerenter', syncEnv);
+  env.addEventListener('pointerleave', function () { env.classList.remove('is-closed'); syncEnv(); });
+  env.addEventListener('focusin', function () { setTimeout(syncEnv, 0); });
+  env.addEventListener('focusout', function () {
+    setTimeout(function () {
+      if (!env.contains(doc.activeElement)) env.classList.remove('is-closed');
+      syncEnv();
+    }, 0);
+  });
+
+  /* ------------------------------------------------------------
+     Copy contact
+     ------------------------------------------------------------ */
+  var copyBtn = $('#copy-email');
+  var emailEl = $('#email');
+  var copyStatus = $('#copy-status');
+  var copyTimer = 0;
+  function selectText(el) {
+    try {
+      var r = doc.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) { /* ignore */ }
+  }
+  copyBtn.addEventListener('click', function () {
+    var text = emailEl.textContent.trim();
+    var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+    var done = function (ok) {
+      clearTimeout(copyTimer);
+      if (ok) {
+        copyBtn.textContent = 'copied!';
+        copyStatus.textContent = 'Copied ' + text + ' to your clipboard.';
+      } else {
+        selectText(emailEl);
+        copyStatus.textContent = 'The clipboard is out of reach here, so I selected the address — press ' + (isMac ? '⌘' : 'Ctrl') + ' + C to copy it.';
+      }
+      copyTimer = setTimeout(function () { copyBtn.textContent = 'copy'; }, 2000);
+    };
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } else { done(false); }
+    } catch (e) { done(false); }
+  });
+
+  /* ------------------------------------------------------------
+     Pencil trail (mouse only)
+     ------------------------------------------------------------ */
+  var cvs = $('#trail');
+  var ctx = cvs.getContext && cvs.getContext('2d');
+  var segs = [], last = null, trailRaf = 0, vw = 0, vh = 0;
+  var LIFE = 1000;
+
+  function sizeTrail() {
+    if (!ctx) return;
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    vw = window.innerWidth; vh = window.innerHeight;
+    cvs.width = Math.round(vw * dpr); cvs.height = Math.round(vh * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function clearTrail() {
+    segs = []; last = null;
+    if (trailRaf) { cancelAnimationFrame(trailRaf); trailRaf = 0; }
+    if (ctx) ctx.clearRect(0, 0, vw, vh);
+  }
+  function paintTrail(now) {
+    trailRaf = 0;
+    ctx.clearRect(0, 0, vw, vh);
+    segs = segs.filter(function (s) { return now - s.t < LIFE; });
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#3d3d3d';
+    for (var i = 0; i < segs.length; i++) {
+      var s = segs[i], a = 1 - (now - s.t) / LIFE;
+      ctx.globalAlpha = 0.3 * a;
+      ctx.lineWidth = 0.6 + 1.0 * a;
+      ctx.beginPath(); ctx.moveTo(s.x0, s.y0); ctx.lineTo(s.x1, s.y1); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    if (segs.length && !doc.hidden) trailRaf = requestAnimationFrame(paintTrail);
+  }
+  if (ctx) {
+    sizeTrail();
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || reduced() || doc.hidden) { last = null; return; }
+      var p = { x: e.clientX, y: e.clientY };
+      if (last && Math.abs(p.x - last.x) + Math.abs(p.y - last.y) > 1) {
+        segs.push({ x0: last.x, y0: last.y, x1: p.x, y1: p.y, t: performance.now() });
+        if (segs.length > 500) segs.shift();
+        if (!trailRaf) trailRaf = requestAnimationFrame(paintTrail);
+        last = p;
+      } else if (!last) {
+        last = p;
+      }
+    }, { passive: true });
+    doc.addEventListener('pointerleave', function () { last = null; });
+    window.addEventListener('blur', function () { last = null; });
+  }
+
+  /* Pause when the tab is hidden */
+  doc.addEventListener('visibilitychange', function () {
+    if (doc.hidden) {
+      clearTrail();
+      if (turn && !drag) settle();
+    }
+  });
+})();
+</script>
+</body>
 </html>
